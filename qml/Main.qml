@@ -14,8 +14,8 @@ GameWindow {//游戏窗口
 
         LevelEditor{//游戏关卡编辑
 
-            toRemoveEntityTypes: [  ]//应该删除的实体的数组
-            toStoreEntityTypes: [  ]//存储关卡可中的实体
+            toRemoveEntityTypes: ["coin"]//应该删除的实体的数组
+            toStoreEntityTypes: ["coin"]//存储关卡可中的实体
 
             gameNetworkItem: gameNetwork//用户生成关卡需要的组件id
 
@@ -30,7 +30,7 @@ GameWindow {//游戏窗口
         }
 
         FelgoGameNetwork{//游戏排行榜、成就和挑战
-
+            id:gameNetwork
         }
 
         Menuscene{//菜单界面

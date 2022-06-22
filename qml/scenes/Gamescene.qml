@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import Felgo 3.0
+import Felgo 3.9
 import "../entities"
 Item {
     EntityManager{//实体管理器,管理从实体基础组件派生的所有实体
@@ -22,8 +22,12 @@ Item {
 
         PhysicsWorld {//模拟物理世界,包含所有物理实体
             gravity.y: 9.81//使用地球重力
-            updatesPerSecondForPhysics:30//物理世界每秒更新的频率
             running: true//暂停游戏时设置为false
+            updatesPerSecondForPhysics:30//物理世界每秒更新的频率
+            velocityIterations: 5//速度的迭代
+            positionIterations: 5//位置的迭代
+            z:10//在实体上绘制debugDraw
+            debugDrawVisible: false//设置为true查看物理系统的调试图
 
         }
 
