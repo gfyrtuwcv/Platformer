@@ -61,5 +61,7 @@ macx {
 
 DISTFILES += \
     qml/AudioManager.qml \
-    qml/Gamesene.qml \
-    qml/entities/Player.qml
+    qml/Gamescene.qml \
+    qml/entities/Player.qml \
+    qml/scenes/Levelscene.qml \
+    qml/scenes/Menuscene.qml
