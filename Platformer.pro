@@ -58,3 +58,8 @@ win32 {
 macx {
     ICON = macx/app_icon.icns
 }
+
+DISTFILES += \
+    qml/AudioManager.qml \
+    qml/Gamesene.qml \
+    qml/entities/Player.qml
