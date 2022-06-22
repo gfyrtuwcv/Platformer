@@ -1,6 +1,15 @@
 #ifndef PLAYERBASED_H
 #define PLAYERBASED_H
-class Playerbased{
+#include <QObject>
+#include <QQmlEngine>
+//玩家
+class Playerbased : public QObject
+{
+    Q_OBJECT
+public:
+    Playerbased() {}
+    virtual ~Playerbased() {}
+private:
 
 };
 

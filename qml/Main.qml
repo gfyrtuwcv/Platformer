@@ -1,5 +1,6 @@
 import Felgo 3.0
 import QtQuick 2.0
+import based 1.0
 import "scenes"
 GameWindow {//游戏窗口
     id: gameWindow
@@ -7,7 +8,6 @@ GameWindow {//游戏窗口
 
     screenWidth: 960
     screenHeight: 640
-
         Gamescene{//游戏界面
             id:gamescene
         }
