@@ -15,7 +15,7 @@ PRODUCT_VERSION_CODE = 1
 # main.qml file (App::licenseKey for your app or GameWindow::licenseKey for your game)
 # Only used for local builds and Felgo Cloud Builds (https://felgo.com/cloud-builds)
 # Not used if using Felgo Live
-PRODUCT_LICENSE_KEY = ""
+PRODUCT_LICENSE_KEY = "1B311D910312A8A54820FA710F1633B20169187EC13CFFF9AFD5B87DA2D18FAD4F240513A939D8BC419C1C1B1DE3E0E91854D80554F9B6534D8DC14BBC8F4C842115F1664E16510A61D4EBF2E7C695BCC350ED7F5E8F329A83258280BF551E52467574384623B5B0673EBC2B3A29A4775D4460645E06E9F45C3F82FF65424CC6EAADF57746EDDBAC68FA76D158AA83E8A6642C65230551137E97E1819318D555B3459081687A99658293521EA02491E48A853ACF7BD16D590840C60764F934F8E664E4FF2223874FF22078024867DF7528D8BB397C01AAC672696558394C33628A62CC3A4E2E169B4D9DDF7D5E8A9FD54A959A50CFBB9EDA13BDB8311599A31F45A3515177A8BB443B46C6B2A7B6BF669022210FCCF2BAA774851E49D5892C7EF18C0F21A706AC17013A5F513563D32B55EF332CDC7169E6AC3507060143F90BF5E81FFC13D447729BB3FE01BF1161DCFCF0FEF092D12CB0F7130EB7D776AF34 "
 
 qmlFolder.source = qml
 DEPLOYMENTFOLDERS += qmlFolder # comment for publishing
@@ -38,7 +38,10 @@ DEPLOYMENTFOLDERS += assetsFolder
 
 
 # The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    Enemybased.cpp \
+    c++/Enemybased.cpp \
+    c++/Obstaclesbased.cpp
 
 
 android {
@@ -62,6 +65,19 @@ macx {
 DISTFILES += \
     qml/AudioManager.qml \
     qml/Gamescene.qml \
+    qml/entities/Enemybased.qml \
+    qml/entities/Obstaclesbased.qml \
     qml/entities/Player.qml \
+    qml/entities/Propbased.qml \
     qml/scenes/Levelscene.qml \
     qml/scenes/Menuscene.qml
+
+HEADERS += \
+    Enemybased.h \
+    Obstaclesbased.h \
+    Playerbased.h \
+    Propbased.h \
+    c++/Enemybased.h \
+    c++/Obstaclesbased.h \
+    c++/Playerbased.h \
+    c++/Propbased.h

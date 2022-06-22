@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Felgo 3.0
-import "entities"
+import "../entities"
 Item {
     EntityManager{//实体管理器,管理从实体基础组件派生的所有实体
         id:entitymanager
