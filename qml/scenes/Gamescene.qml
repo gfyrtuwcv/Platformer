@@ -8,8 +8,8 @@ Item {
     }
     Scene{//游戏场景
         id:scene
-        width: 480
-        height: 320
+        width: 960
+        height: 640
 
 
         BackgroundImage{//背景图
