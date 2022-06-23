@@ -6,6 +6,7 @@
 class Obstaclesbased : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     Obstaclesbased();
     virtual ~Obstaclesbased();

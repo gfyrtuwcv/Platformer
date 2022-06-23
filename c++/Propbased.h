@@ -6,7 +6,7 @@
 class Propbased : public QObject
 {
     Q_OBJECT
-
+    QML_ELEMENT
 public:
     Propbased();
     virtual ~Propbased();

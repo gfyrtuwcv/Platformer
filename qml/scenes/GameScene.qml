@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import Felgo 3.9
+import Felgo 3.0
 import "../entities"
 Item {
     EntityManager{//实体管理器,管理从实体基础组件派生的所有实体
@@ -10,7 +10,6 @@ Item {
         id:scene
         width: 960
         height: 640
-
 
         BackgroundImage{//背景图
             id:backgroundimage
@@ -30,11 +29,6 @@ Item {
             debugDrawVisible: false//设置为true查看物理系统的调试图
 
         }
-
-        Player{//玩家
-
-        }
-
         BuildEntityButton {
         }
         ItemEditor{//项编辑器

@@ -9,6 +9,7 @@
 class Playerbased : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 signals:
     void death();//玩家死亡
     void encounterObstacl();//碰到障碍

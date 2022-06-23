@@ -6,6 +6,7 @@
 class Enemybased : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     Enemybased();
     virtual ~Enemybased();

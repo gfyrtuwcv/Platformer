@@ -8,7 +8,7 @@ GameWindow {//游戏窗口
 
     screenWidth: 960
     screenHeight: 640
-        /*GameScene{//游戏界面
+        GameScene{//游戏界面
             id:gameScene
         }
         LevelEditor{//游戏关卡编辑
@@ -20,7 +20,7 @@ GameWindow {//游戏窗口
             onLevelPublished: {//发布具有关卡Id的级别时，将调用
             }
 
-        }*/
+        }
 
         SelectLevelScene{//关卡界面
             id:selectLevelScene
