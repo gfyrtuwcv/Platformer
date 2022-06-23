@@ -8,14 +8,26 @@ GameWindow {//游戏窗口
 
     screenWidth: 960
     screenHeight: 640
+<<<<<<< HEAD
         GameScene{//游戏界面
           id:gameScene
         }
 //        LevelEditor{//游戏关卡编辑
+=======
+        /*GameScene{//游戏界面
+            id:gameScene
+        }
+        LevelEditor{//游戏关卡编辑
+            gameNetworkItem: gameNetwork//用户生成关卡需要的组件id
+            toRemoveEntityTypes: ["prop","enemy","obstacles"]//应该删除的实体的数组
+            toStoreEntityTypes: ["prop","enemy","obstacles"]//存储关卡可中的实体
+>>>>>>> origin/main
 
-//            toRemoveEntityTypes: [  ]//应该删除的实体的数组
-//            toStoreEntityTypes: [  ]//存储关卡可中的实体
+            applicationJSONLevelsDirectory: "levels/"//存放关卡的目录
+            onLevelPublished: {//发布具有关卡Id的级别时，将调用
+            }
 
+<<<<<<< HEAD
 //<<<<<<< HEAD
 //            gameNetworkItem: gameNetwork//用户生成关卡需要的组件id
 //=======
@@ -28,6 +40,9 @@ GameWindow {//游戏窗口
 //            }
 
 //        }
+=======
+        }*/
+>>>>>>> origin/main
 
         SelectLevelScene{//关卡界面
             id:selectLevelScene
