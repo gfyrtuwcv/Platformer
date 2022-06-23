@@ -18,7 +18,6 @@ SceneBase{//游戏场景
             property string bg2: "../assets/backgroundImage/night_bg.png"
             source: bg0
         }
-
         PhysicsWorld {//模拟物理世界,包含所有物理实体
             gravity.y: 9.81//使用地球重力
             running: true//暂停游戏时设置为false
@@ -29,17 +28,26 @@ SceneBase{//游戏场景
             debugDrawVisible: false//设置为true查看物理系统的调试图
 
         }
-
-        Player{//玩家
+        /*Player{
+            id:player
 
         }
+        RoadBlock{
+            id:road
+            anchors {
+              bottom: scene.bottom
+              left: scene.left
+              right: scene.right
+            }
+        }*/
 
-        BuildEntityButton {
-        }
-        ItemEditor{//项编辑器
+       // BuildEntityButton {
+        //}
+       // ItemEditor{//项编辑器
              //标记为可编辑
 
-        }
+       // }
+    //}
 
 }
 

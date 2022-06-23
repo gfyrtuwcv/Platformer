@@ -1,5 +1,9 @@
 # allows to add DEPLOYMENTFOLDERS and links to the Felgo library and QtCreator auto-completion
 CONFIG += felgo
+CONFIG += qmltypes
+QML_IMPORT_NAME = based
+QML_IMPORT_MAJOR_VERSION = 1
+INCLUDEPATH += ./c++
 # uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 # for the remaining steps to build a custom Live Code Reload app see here: https://felgo.com/custom-code-reload-app/
 # CONFIG += felgo-live
@@ -66,18 +70,21 @@ macx {
 DISTFILES += \
     qml/AudioManager.qml \
     qml/Gamescene.qml \
+    qml/Main.qml \
     qml/common/ButtonBase.qml \
     qml/common/ImageButton.qml \
     qml/entities/Coin.qml \
     qml/entities/Enemybased.qml \
     qml/entities/MushroomMonster.qml \
     qml/entities/Obstaclesbased.qml \
+    qml/entities/Platform.qml \
     qml/entities/Player.qml \
     qml/entities/Player.qml \
     qml/entities/Propbased.qml \
     qml/entities/RoadBlock.qml \
     qml/levels/Level1.qml \
     qml/levels/Level2.qml \
+    qml/scenes/GameScene.qml \
     qml/scenes/MenuScene.qml \
     qml/scenes/OptionScene.qml \
     qml/scenes/SceneBase.qml \

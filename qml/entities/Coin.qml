@@ -1,11 +1,10 @@
 import QtQuick 2.0
 import Felgo 3.0
-import Felgo 3.9
 import based 1.0
 //金币
 EntityBaseDraggable{
-    entityId: "coin1"
-    entityType: "coin"
+    entityId: "coin"
+    entityType: "prop"
     property alias coins: coin
     property alias image: sprite
     width: sprite.width
@@ -15,7 +14,7 @@ EntityBaseDraggable{
         id:coin
 
     }
-    MultiResolutionImage {
+    Image {
         id:sprite
     }
     BoxCollider{//物理组件

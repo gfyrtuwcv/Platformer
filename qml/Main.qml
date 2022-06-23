@@ -4,16 +4,12 @@ import QtQuick 2.0
 import "scenes"
 GameWindow {//游戏窗口
     id: gameWindow
-
-
     screenWidth: 960
     screenHeight: 640
-<<<<<<< HEAD
         GameScene{//游戏界面
           id:gameScene
         }
 //        LevelEditor{//游戏关卡编辑
-=======
         /*GameScene{//游戏界面
             id:gameScene
         }
@@ -42,7 +38,6 @@ GameWindow {//游戏窗口
 //        }
 =======
         }*/
->>>>>>> origin/main
 
         SelectLevelScene{//关卡界面
             id:selectLevelScene
@@ -102,7 +97,7 @@ GameWindow {//游戏窗口
 
         */
         state: "menu"
-        activeScene: menuScene
+        activeScene: gameScene
         states: [
             State {
                 name: "menu"//菜单

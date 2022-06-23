@@ -1,10 +1,42 @@
 #include "Playerbased.h"
-
-Playerbased::Playerbased():x(0),y(0),size(1),islive(true)
+Playerbased::Playerbased(QObject *parent): QObject(parent),p_x(0),p_y(0),bigsize(1),islive(true)
 {}
 Playerbased::~Playerbased(){}
 
-void Playerbased::left(int a){
+bool Playerbased::live(){
+    return islive;
+}
+
+int Playerbased::size(){
+    return bigsize;
+}
+
+int Playerbased::x(){
+    return p_x;
+}
+
+int Playerbased::y(){
+    return p_y;
+}
+
+void Playerbased::setlive(const bool b){
+    islive=b;
+}
+
+void Playerbased::setsize(const int a){
+    bigsize+=a;
+}
+
+void Playerbased::setx(const int a){
+    p_x+=a;
+}
+
+void Playerbased::sety(const int a){
+    p_y+=a;
+}
+
+
+/*void Playerbased::left(int a){
     x-=a;
 }
 void Playerbased::right(int a){
@@ -16,25 +48,25 @@ void Playerbased::down(int a){
 void Playerbased::up(int a){
     y-=a;
 }
-
+*/
 void Playerbased::sizechang(int a){
-    size+=a;
-    if(size>3) size=3;
-    if(size<1) emit death();//玩家死亡
+    bigsize+=a;
+    if(bigsize>3) bigsize=3;
+    if(bigsize<1) emit death();//玩家死亡
 }
 
 void Playerbased::resultsObstacl(Obstaclesbased ob){
-    if(ob.isdeadly()) sizechang(-1);
+    if(ob.deadly()) sizechang(-1);
 }
 
 void Playerbased::resultsEnemy(Enemybased en){
-    if(y<en.gety()){
-        en.die();
+    if(p_y<en.y()){
+        en.setlive(false);
     }else sizechang(-1);
 }
 
 void Playerbased::disappear(Propbased pr){
-    pr.disappear();
+    pr.setare(false);
 }
 
 void Playerbased::die(){
