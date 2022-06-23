@@ -67,6 +67,7 @@ DISTFILES += \
     qml/AudioManager.qml \
     qml/Gamescene.qml \
     qml/common/ButtonBase.qml \
+    qml/common/ImageButton.qml \
     qml/entities/Coin.qml \
     qml/entities/Enemybased.qml \
     qml/entities/MushroomMonster.qml \
@@ -75,7 +76,10 @@ DISTFILES += \
     qml/entities/Player.qml \
     qml/entities/Propbased.qml \
     qml/entities/RoadBlock.qml \
+    qml/levels/Level1.qml \
+    qml/levels/Level2.qml \
     qml/scenes/MenuScene.qml \
+    qml/scenes/OptionScene.qml \
     qml/scenes/SceneBase.qml \
     qml/scenes/SelectLevelScene.qml
 

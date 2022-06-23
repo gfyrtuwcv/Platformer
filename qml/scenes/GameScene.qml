@@ -1,16 +1,15 @@
 import QtQuick 2.0
-import Felgo 3.9
+import Felgo 3.0
 import "../entities"
-Item {
-    EntityManager{//实体管理器,管理从实体基础组件派生的所有实体
-        id:entitymanager
-        entityContainer: scene
-    }
-    Scene{//游戏场景
+
+SceneBase{//游戏场景
         id:scene
         width: 960
         height: 640
-
+        EntityManager{//实体管理器,管理从实体基础组件派生的所有实体
+            id:entitymanager
+            entityContainer: scene
+        }
 
         BackgroundImage{//背景图
             id:backgroundimage
@@ -41,6 +40,7 @@ Item {
              //标记为可编辑
 
         }
-    }
 
 }
+
+
