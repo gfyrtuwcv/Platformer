@@ -1,41 +1,44 @@
 import Felgo 3.0
 import QtQuick 2.0
-import based 1.0
+
 import "scenes"
 GameWindow {//游戏窗口
     id: gameWindow
-    activeScene: scene
+
 
     screenWidth: 960
     screenHeight: 640
-        Gamescene{//游戏界面
-            id:gamescene
-        }
+//        GameScene{//游戏界面
+//            id:gameScene
+//        }
+//        LevelEditor{//游戏关卡编辑
 
-        LevelEditor{//游戏关卡编辑
+//            toRemoveEntityTypes: [  ]//应该删除的实体的数组
+//            toStoreEntityTypes: [  ]//存储关卡可中的实体
 
-            toRemoveEntityTypes: [  ]//应该删除的实体的数组
-            toStoreEntityTypes: [  ]//存储关卡可中的实体
+//            gameNetworkItem: gameNetwork//用户生成关卡需要的组件id
 
-            gameNetworkItem: gameNetwork//用户生成关卡需要的组件id
+//            applicationJSONLevelsDirectory: "levels/"//存放关卡的目录
+//            onLevelPublished: {//发布具有关卡Id的级别时，将调用
+//            }
 
-            applicationJSONLevelsDirectory: "levels/"//存放关卡的目录
-            onLevelPublished: {//发布具有关卡Id的级别时，将调用
-            }
+//        }
 
-        }
-
-        Levelscene{//关卡界面
-            id:levescene
+        SelectLevelScene{//关卡界面
+            id:selectLevelScene
         }
 
         FelgoGameNetwork{//游戏排行榜、成就和挑战
 
         }
 
-        Menuscene{//菜单界面
-            id:menuscene
+        MenuScene{//菜单界面
+            id:menuScene
+
+            onSelectLevelPressed: gameWindow.state="selectLevel"
+            onCreditPressed: gameWindow.state="Credit"
         }
+
 
         FontLoader {//加载字体
           id: marioFont
@@ -51,25 +54,33 @@ GameWindow {//游戏窗口
 
         */
         state: "menu"
+        activeScene: menuScene
         states: [
             State {
                 name: "menu"//菜单
                 PropertyChanges {
-                    target: menuscene
+                    target: menuScene
 
                 }
             },
             State {
-                name: "level"//关卡
+                name: "selectLevel"//关卡
                 PropertyChanges {
-                    target: levescene
+                    target: levelScene
 
                 }
             },
+//            State {
+//                name: "credit"
+//                PropertyChanges {
+//                    target: C
+
+//                }
+//            }
             State {
                 name: "game"//游戏
                 PropertyChanges {
-                    target: gamescene
+                    target: gameScene
 
                 }
             }

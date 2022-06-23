@@ -66,16 +66,18 @@ macx {
 DISTFILES += \
     qml/AudioManager.qml \
     qml/Gamescene.qml \
+    qml/common/ButtonBase.qml \
     qml/entities/Coin.qml \
     qml/entities/Enemybased.qml \
-    qml/entities/Mushroomblame.qml \
+    qml/entities/MushroomMonster.qml \
     qml/entities/Obstaclesbased.qml \
     qml/entities/Player.qml \
     qml/entities/Player.qml \
     qml/entities/Propbased.qml \
-    qml/entities/Roadblock.qml \
-    qml/scenes/Levelscene.qml \
-    qml/scenes/Menuscene.qml
+    qml/entities/RoadBlock.qml \
+    qml/scenes/MenuScene.qml \
+    qml/scenes/SceneBase.qml \
+    qml/scenes/SelectLevelScene.qml
 
 HEADERS += \
     Enemybased.h \
