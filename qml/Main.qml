@@ -16,7 +16,12 @@ GameWindow {//游戏窗口
 //            toRemoveEntityTypes: [  ]//应该删除的实体的数组
 //            toStoreEntityTypes: [  ]//存储关卡可中的实体
 
+<<<<<<< HEAD
 //            gameNetworkItem: gameNetwork//用户生成关卡需要的组件id
+=======
+            toRemoveEntityTypes: ["coin"]//应该删除的实体的数组
+            toStoreEntityTypes: ["coin"]//存储关卡可中的实体
+>>>>>>> origin/main
 
 //            applicationJSONLevelsDirectory: "levels/"//存放关卡的目录
 //            onLevelPublished: {//发布具有关卡Id的级别时，将调用
@@ -29,7 +34,7 @@ GameWindow {//游戏窗口
         }
 
         FelgoGameNetwork{//游戏排行榜、成就和挑战
-
+            id:gameNetwork
         }
 
         MenuScene{//菜单界面

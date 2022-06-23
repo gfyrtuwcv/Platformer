@@ -2,10 +2,8 @@
 #include <FelgoApplication>
 #include <QQmlApplicationEngine>
 #include <QtQml>
-#include "c++/Enemybased.h"
-#include "c++/Obstaclesbased.h"
+
 #include "c++/Playerbased.h"
-#include "c++/Propbased.h"
 
 // uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 //#include <FelgoLiveClient>
