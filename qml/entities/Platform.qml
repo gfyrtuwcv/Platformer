@@ -1,20 +1,20 @@
 import QtQuick 2.0
 import Felgo 3.0
 import based 1.0
-//道路方块
+//平台
 EntityBaseDraggable {
-    entityId: "road"
+    entityId: "platform"
     entityType: "obstacles"
-    property alias road: road
+    property alias platform: platform
     property alias image: sprite
     width: sprite.width
     height: sprite.height
     Obstaclesbased{
-        id:road
+        id:platform
     }
     Image {
         id:sprite
-        source: "../assets/ground/ground_grass.png"
+        source: "../assets/platform/platform.png"
     }
     BoxCollider{//物理组件
         anchors.fill: parent

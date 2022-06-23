@@ -13,7 +13,7 @@ EntityBaseDraggable{
     Enemybased{
         id:mushroom
     }
-    MultiResolutionImage {
+    Image {
         id:sprite
         source: "../assets/powerups/mushroom.png"
     }

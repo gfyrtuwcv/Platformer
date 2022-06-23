@@ -10,7 +10,6 @@ Item {
         id:scene
         width: 960
         height: 640
-
         BackgroundImage{//背景图
             id:backgroundimage
             property string bg0: "../assets/backgroundImage/day_bg.png"
@@ -18,7 +17,6 @@ Item {
             property string bg2: "../assets/backgroundImage/night_bg.png"
             source: bg0
         }
-
         PhysicsWorld {//模拟物理世界,包含所有物理实体
             gravity.y: 9.81//使用地球重力
             running: true//暂停游戏时设置为false
@@ -29,12 +27,25 @@ Item {
             debugDrawVisible: false//设置为true查看物理系统的调试图
 
         }
-        BuildEntityButton {
-        }
-        ItemEditor{//项编辑器
-             //标记为可编辑
+        /*Player{
+            id:player
 
         }
+        RoadBlock{
+            id:road
+            anchors {
+              bottom: scene.bottom
+              left: scene.left
+              right: scene.right
+            }
+        }*/
+
+       // BuildEntityButton {
+        //}
+       // ItemEditor{//项编辑器
+             //标记为可编辑
+
+       // }
     }
 
 }

@@ -1,16 +1,28 @@
 #include "Enemybased.h"
-
-Enemybased::Enemybased():x(0),y(0),islive(true)
+Enemybased::Enemybased(QObject *parent): QObject(parent),e_x(0),e_y(0),islive(true)
 {}
 Enemybased::~Enemybased(){}
 
-void Enemybased::move(int a,int b){
-    x+=a;
-    y+=b;
+bool Enemybased::live(){
+    return islive;
 }
-void Enemybased::die(){
-    islive=false;
+
+int Enemybased::x(){
+    return e_x;
 }
-int Enemybased::gety(){
-    return y;
+
+int Enemybased::y(){
+    return e_y;
 }
+
+void Enemybased::setlive(const bool b){
+    islive=b;
+}
+void Enemybased::setx(const int a){
+    e_x+=a;
+}
+void Enemybased::sety(const int a){
+    e_y+=a;
+}
+
+

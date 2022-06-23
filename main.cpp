@@ -2,9 +2,8 @@
 #include <FelgoApplication>
 #include <QQmlApplicationEngine>
 #include <QtQml>
-
 #include "c++/Playerbased.h"
-
+#include <iostream>
 // uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 //#include <FelgoLiveClient>
 
@@ -16,13 +15,11 @@ int main(int argc, char *argv[])
 
     felgo.initialize(&engine);
     felgo.setLicenseKey(PRODUCT_LICENSE_KEY);
-
-    qmlRegisterType<Enemybased>("based",1,0,"Enemybased");//注册c++类至qml
+    qmlRegisterType<Enemybased>("based",1,0,"Enemybased");//注册c++类至qml;
     qmlRegisterType<Obstaclesbased>("based",1,0,"Obstaclesbased");
     qmlRegisterType<Playerbased>("based",1,0,"Playerbased");
     qmlRegisterType<Propbased>("based",1,0,"Propbased");
     felgo.setMainQmlFileName(QStringLiteral("qml/Main.qml"));
     engine.load(QUrl(felgo.mainQmlFileName()));
-
     return app.exec();
 }

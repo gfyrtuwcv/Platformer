@@ -4,8 +4,6 @@ import QtQuick 2.0
 import "scenes"
 GameWindow {//游戏窗口
     id: gameWindow
-
-
     screenWidth: 960
     screenHeight: 640
         GameScene{//游戏界面
@@ -52,7 +50,7 @@ GameWindow {//游戏窗口
 
         */
         state: "menu"
-        activeScene: menuScene
+        activeScene: gameScene
         states: [
             State {
                 name: "menu"//菜单
