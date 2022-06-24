@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import Felgo 3.0
-import Felgo 3.9
 import based 1.0
 //金币
 EntityBaseDraggable{
@@ -31,7 +30,6 @@ EntityBaseDraggable{
         fixture.onBeginContact: {
                     // 当与另一个实体碰撞时，
                 }
-        //fixture.onBeginContact: collidedWithBox()当与另一个实体碰撞时，调用collidedWithBox()
     }
 }
 

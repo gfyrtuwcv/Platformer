@@ -7,6 +7,9 @@ GameWindow {//游戏窗口
     screenWidth: 960
     screenHeight: 640
         GameScene{//游戏界面
+          id:gameScene
+        }
+        /*GameScene{//游戏界面
             id:gameScene
         }
         LevelEditor{//游戏关卡编辑
@@ -19,9 +22,13 @@ GameWindow {//游戏窗口
             }
 
         }
+     }
+        }*/
 
         SelectLevelScene{//关卡界面
             id:selectLevelScene
+
+            onBackButtonPressed: gameWindow.state="menu"
         }
 
         FelgoGameNetwork{//游戏排行榜、成就和挑战
@@ -32,7 +39,10 @@ GameWindow {//游戏窗口
             id:menuScene
 
             onSelectLevelPressed: gameWindow.state="selectLevel"
-            onCreditPressed: gameWindow.state="Credit"
+            onCreditPressed: gameWindow.state="credit"
+            //onExitPressed:
+            onOptionPressed: gameWindow.state="option"
+
         }
 
 
@@ -45,6 +55,29 @@ GameWindow {//游戏窗口
           id: audioManager
         }
 
+        OptionScene{
+            id:optionScene
+
+            onMusicPressed: {
+                if(Settings.musicEnabled)
+                    Settings.musicEnabled = false
+                else
+                    Settings.musicEnabled = true
+            }
+
+            onSoundPressed: {
+                if(Settings.soundEnabled){
+                    Settings.soundEnabled = false
+                }
+                else{
+                    Settings.soundEnabled = true
+
+                    //audioManager.
+                }
+            }
+
+        }
+
         /*
           状态
 
@@ -55,15 +88,19 @@ GameWindow {//游戏窗口
             State {
                 name: "menu"//菜单
                 PropertyChanges {
-                    target: menuScene
+                    target: menuScene; opacity: 1}
+                PropertyChanges {
+                    target: gameWindow; activeScene:menuScene
 
                 }
             },
             State {
                 name: "selectLevel"//关卡
                 PropertyChanges {
-                    target: levelScene
-
+                    target: selectLevelScene; opacity:1
+                }
+                PropertyChanges {
+                    target: gameWindow; activeScene: selectLevelScene
                 }
             },
 //            State {
@@ -76,8 +113,19 @@ GameWindow {//游戏窗口
             State {
                 name: "game"//游戏
                 PropertyChanges {
-                    target: gameScene
-
+                    target: gameScene; opacity:1
+                }
+                PropertyChanges {
+                    target: gameWindow; activeScene: gameScene
+                }
+            },
+            State {
+                name: "option"
+                PropertyChanges {
+                    target: optionScene; opacity: 1
+                }
+                PropertyChanges {
+                    target: gameWindow; activeScene:optionScene
                 }
             }
         ]

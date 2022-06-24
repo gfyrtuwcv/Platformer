@@ -11,11 +11,21 @@ SceneBase{
     //当“Exit”按钮按下时，该信号触发
     signal exitPressed
 
-//    Image {
-//        id: menuBackGround
-//        source: "file"
-//        anchors.fill: parent
-//    }
+    signal optionPressed
+
+    Image {
+        id: menuBackGround
+        source: "../../assets/backgroundImage/day_bg.png"
+        anchors.fill: parent
+    }
+
+    Text{
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: 30
+        font.pixelSize: 30
+        color: "#e9e9e9"
+        text: "kid闯闯闯"
+    }
 
     Column{
         anchors.centerIn: parent
@@ -38,12 +48,14 @@ SceneBase{
 
     }
 
-    Common.ButtonBase{
-        text: "Options"
+    Common.ImageButton{
+        id: optionButton
+        imageSource: "../../assets/ui/options.png"
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 10
         anchors.right: parent.right
         anchors.rightMargin: 10
+        onClicked: optionPressed()
     }
 
 

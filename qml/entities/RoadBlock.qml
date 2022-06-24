@@ -23,9 +23,5 @@ EntityBaseDraggable {
         collidesWith: Box.player | Box.enemy | Box.prop //定义碰撞
 
         bodyType: Body.Static//静态,不移动
-        //fixture.onBeginContact: {
-
-                    // 当与另一个实体碰撞时，
-          //      }
     }
 }

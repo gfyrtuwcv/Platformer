@@ -26,9 +26,5 @@ EntityBaseDraggable{
         collisionTestingOnlyMode:false//使用物理进行碰撞测试，修改实体位置
 
         bodyType: Body.active//动态,移动
-        //fixture.onBeginContact: {
-
-                    // 当与另一个实体碰撞时，
-          //      }
     }
 }

@@ -1,7 +1,7 @@
 import QtQuick 2.0
 
 Rectangle{
-    id: button
+    id: textButton
 
     //通过文本的尺寸动态匹配按钮的大小
     width: buttonText.width+ paddingHorizontal*2
@@ -13,7 +13,7 @@ Rectangle{
     //从文本元素到左右两侧矩形的水平边距
     property int paddingHorizontal: 8
     //从文本元素到顶部和底部矩形的垂直边距
-    property int paddingVertical: 5
+    property int paddingVertical: 8
 
     property alias text: buttonText.text
 
@@ -29,8 +29,8 @@ Rectangle{
         id:mouseArea
         anchors.fill: parent
         hoverEnabled: true
-        onClicked: button.clicked()
-        onPressed: button.opacity = 0.5
-        onReleased: button.opacity = 1
+        onClicked: textButton.clicked()
+        onPressed: textButton.opacity = 0.5
+        onReleased: textButton.opacity = 1
     }
 }
