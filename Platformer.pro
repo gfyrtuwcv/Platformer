@@ -68,6 +68,7 @@ macx {
 }
 
 DISTFILES += \
+    ../untitled/qml/MainForm.qml \
     qml/AudioManager.qml \
     qml/Gamescene.qml \
     qml/Main.qml \

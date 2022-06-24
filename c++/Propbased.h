@@ -10,7 +10,6 @@ class Propbased : public QObject
     Q_PROPERTY(bool are READ are WRITE setare)
     Q_PROPERTY(int x READ x WRITE setx)
     Q_PROPERTY(int y READ y WRITE sety)
-
 public:
     Propbased(QObject *parent=nullptr);
     virtual ~Propbased();

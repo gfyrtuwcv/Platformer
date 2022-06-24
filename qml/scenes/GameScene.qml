@@ -44,8 +44,6 @@ SceneBase{//游戏场景
        // BuildEntityButton {
         //}
        // ItemEditor{//项编辑器
-             //标记为可编辑
-
        // }
     //}
 
