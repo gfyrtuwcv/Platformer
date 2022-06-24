@@ -11,6 +11,7 @@ SceneBase{
 
     signal exitPressed2
 
+    signal backButtonPressed2
 
 
     Column{
@@ -61,5 +62,14 @@ SceneBase{
             onClicked: exitPressed2()
         }
 
+    }
+
+    ButtonBase{
+        text: "Back"
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        onClicked: backButtonPressed2()
     }
 }

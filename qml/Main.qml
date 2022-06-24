@@ -90,6 +90,8 @@ GameWindow {//游戏窗口
                 }
             }
 
+            onBackButtonPressed2: gameWindow.state = "menu"
+
         }
 
         /*
