@@ -7,9 +7,6 @@ GameWindow {//游戏窗口
     screenWidth: 960
     screenHeight: 640
         GameScene{//游戏界面
-          id:gameScene
-        }
-        /*GameScene{//游戏界面
             id:gameScene
         }
         LevelEditor{//游戏关卡编辑
@@ -22,8 +19,6 @@ GameWindow {//游戏窗口
             }
 
         }
-     }
-        }*/
 
         SelectLevelScene{//关卡界面
             id:selectLevelScene
@@ -77,13 +72,12 @@ GameWindow {//游戏窗口
             }
 
         }
-
         /*
           状态
 
         */
-        state: "menu"
-        activeScene: gameScene
+        state: "game"
+        //activeScene: gameScene
         states: [
             State {
                 name: "menu"//菜单

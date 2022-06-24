@@ -3,7 +3,6 @@ CONFIG += qmltypes
 CONFIG += felgo
 QML_IMPORT_NAME = based
 QML_IMPORT_MAJOR_VERSION = 1
-INCLUDEPATH += ./c++
 # uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 # for the remaining steps to build a custom Live Code Reload app see here: https://felgo.com/custom-code-reload-app/
 # CONFIG += felgo-live
@@ -76,11 +75,14 @@ DISTFILES += \
     qml/common/ImageButton.qml \
     qml/entities/Coin.qml \
     qml/entities/Enemybased.qml \
+    qml/entities/Enemybased.qml \
     qml/entities/MushroomMonster.qml \
+    qml/entities/Obstaclesbased.qml \
     qml/entities/Obstaclesbased.qml \
     qml/entities/Platform.qml \
     qml/entities/Player.qml \
     qml/entities/Player.qml \
+    qml/entities/Propbased.qml \
     qml/entities/Propbased.qml \
     qml/entities/RoadBlock.qml \
     qml/levels/Level1.qml \
