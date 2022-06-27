@@ -45,7 +45,8 @@ SOURCES += main.cpp \
     c++/Enemybased.cpp \
     c++/Obstaclesbased.cpp \
     c++/Playerbased.cpp \
-    c++/Propbased.cpp
+    c++/Propbased.cpp \
+    play.cpp
 
 
 android {
@@ -74,23 +75,34 @@ DISTFILES += \
     qml/common/ButtonBase.qml \
     qml/common/ImageButton.qml \
     qml/entities/Coin.qml \
+
     qml/entities/Enemybased.qml \
-    qml/entities/Enemybased.qml \
+
     qml/entities/Ground.qml \
     qml/entities/Mushroom.qml \
+
+    qml/entities/Finish.qml \
+    qml/entities/MushroomMonster.qml \
+
     qml/entities/Obstaclesbased.qml \
-    qml/entities/Obstaclesbased.qml \
+
     qml/entities/Platform.qml \
+
     qml/entities/Player.qml \
-    qml/entities/Player.qml \
-    qml/entities/Propbased.qml \
+
     qml/entities/Propbased.qml \
     qml/entities/RoadBlock.qml \
+<<<<<<< HEAD
     qml/entities/Tile.qml \
     qml/entities/TileEntityBase.qml \
+=======
+    qml/entities/Spikeball.qml \
+    qml/entities/Star.qml \
+>>>>>>> origin/main
     qml/levels/Level1.qml \
     qml/levels/Level2.qml \
     qml/scenes/GameScene.qml \
+    qml/scenes/LevelScene.qml \
     qml/scenes/MenuScene.qml \
     qml/scenes/OptionScene.qml \
     qml/scenes/SceneBase.qml \
@@ -104,4 +116,5 @@ HEADERS += \
     c++/Enemybased.h \
     c++/Obstaclesbased.h \
     c++/Playerbased.h \
-    c++/Propbased.h
+    c++/Propbased.h \
+    play.h

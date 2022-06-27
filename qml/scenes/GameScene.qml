@@ -29,7 +29,9 @@ SceneBase{//游戏场景
         }
 
         PhysicsWorld {//模拟物理世界,包含所有物理实体
-            gravity: Qt.point(0, 15)//重力
+            id:physicsWorld
+            property int gravitY: 15
+            gravity: Qt.point(0, gravitY)//重力
             running: true//暂停游戏时设置为false
             updatesPerSecondForPhysics:30//物理世界每秒更新的频率
             velocityIterations: 5//速度的迭代
@@ -37,11 +39,33 @@ SceneBase{//游戏场景
             z:100//在实体上绘制debugDraw
             debugDrawVisible: true//设置为true查看物理系统的调试图
 
+            onPreSolve: {
+              //this is called before the Box2DWorld handles contact events
+              var entityA = contact.fixtureA.getBody().target
+              var entityB = contact.fixtureB.getBody().target
+              if(entityA.entityType === "platform" && entityB.entityType === "player" &&
+                      entityA.y > entityB.y) {
+                  console.debug("platform y:"+entityA.y+"   player Y:"+entityB.y)
+                contact.enabled = false//关闭平台碰撞
+              }else{
+                  contact.enabled=true
+              }
+            }
+            /*EditableComponent{//可编辑的属性
+                target: physicsWorld
+                editableType: "Balance"
+                defaultGroup: "Physics"
+                properties: {
+                  "gravityY": {"min": 0, "max": 100, "label": "Gravity"}
+                }
+            }*/
+
         }
-        EntityManager{//实体管理器,管理从实体基础组件派生的所有实体
-            id:entityManager
-            entityContainer: scene
+        Platform{
+            x:160
+            y:500
         }
+
         Player{
             id:player
             x:0
@@ -89,30 +113,24 @@ SceneBase{//游戏场景
           onInputActionPressed: {
             console.debug("key pressed actionName " + actionName + xAxis + "   " + yAxis)
             if(actionName == "up") {
-              //player.jump()
+              player.jump()
             }
           }
         }
         Timer{
             id: updateTimer
-            interval: 60//设置触发器之间的间隔，以毫秒为单位
+            interval: 30//设置触发器之间的间隔，以毫秒为单位
             running: true//启动计时器
             repeat: true//在指定的时间间隔内重复触发
             onTriggered: {//超时触发
                 var xAxis = controller.xAxis;
                 if(xAxis === 0) {
-                    if(Math.abs(player.collider.linearVelocity.x) > 10) player.collider.linearVelocity.x /= 1.5
-                    else player.collider.linearVelocity.x = 0
+                    //player.foot.linearVelocity.x = 0
+                    if(Math.abs(player.foot.linearVelocity.x) > 10) player.collider.linearVelocity.x /= 8
+                    else player.foot.linearVelocity.x = 0
                 }
             }
         }
-
-        /*BuildEntityButton {
-        }
-        ItemEditor{//项编辑器
-             //标记为可编辑
-
-        }*/
     }
 
 

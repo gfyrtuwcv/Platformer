@@ -4,6 +4,7 @@ import Felgo 3.0
 Obstaclesbased{
     id:road
     entityId: "road"
-    //property alias road: road
+    //property alias friction: collider.friction
+    //property alias restitution: collider.restitution
     image.source: "../../assets/ground/ground_grass.png"
 }

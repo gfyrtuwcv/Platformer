@@ -16,10 +16,9 @@ EntityBaseDraggable {
 
         categories: enemy
         collidesWith: player | obstacles//定义为只能和玩家碰撞
+        //collisionTestingOnlyMode:true//使用物理进行碰撞测试，修改实体位置
 
-        collisionTestingOnlyMode:false//使用物理进行碰撞测试，修改实体位置
-
-        bodyType: Body.active//动态,移动
+        bodyType: Body.Dynamic//动态,移动
     }
 
 }
