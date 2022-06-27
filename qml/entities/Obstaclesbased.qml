@@ -5,8 +5,11 @@ EntityBaseDraggable {
     entityType: "obstacles"
     property alias image: image
     property alias collider: collider
+    property bool isdeath: false//是否致命
     width: image.width
     height: image.height
+    gridSize: 16//将实体位置捕获到网格中
+    colliderSize: width
     id:platform
     MultiResolutionImage {
         id:image
@@ -18,14 +21,19 @@ EntityBaseDraggable {
         categories:obstacles
         collidesWith: player | enemy | prop //定义碰撞
 
-        friction:0.5//使物体沿着彼此真实地滑动
-        /*restitution:0.1//来使物体弹跳的
-        sensor:true//对碰撞做出反应
-        density: 0.1//密度*/
+        friction:0.8//使物体沿着彼此真实地滑动
+        restitution:0//来使物体弹跳的
+        sensor:false//对碰撞做出反应
+        density: 0//密度
         bodyType: Body.Static//静态,不移动
 
-        //fixture.beginContact: {//两个fixture开始相互碰撞
-
-        //}
+        /*EditableComponent{//可编辑的属性
+                editableType: "Road"
+                defaultGroup: "Obstacles"
+                properties: {
+                  "friction": {"min": 0, "max": 100, "label": "Friction"},
+                  "restitution": {"min": 0, "max": 100, "label": "Restitution"},
+                }
+            }*/
     }
 }

@@ -6,6 +6,7 @@ EntityBaseDraggable {
 
     property alias image: image
     property alias collider: collider
+    property bool iseat: false//是否被吃
     width: image.width
     height: image.height
     MultiResolutionImage {
@@ -18,7 +19,7 @@ EntityBaseDraggable {
         categories:prop
         collidesWith: player | obstacles//定义碰撞
 
-        collisionTestingOnlyMode:true//使用物理进行碰撞测试，但不修改实体位置
+        collisionTestingOnlyMode:false//使用物理进行碰撞测试，但不修改实体位置
 
         bodyType: Body.Static//静态,不移动
         fixture.onBeginContact: {// 当与另一个实体碰撞时，

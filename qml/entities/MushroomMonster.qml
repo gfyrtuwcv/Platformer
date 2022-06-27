@@ -5,5 +5,4 @@ Enemybased{
     id:mushroomblame
     entityId: "mushroom"
     image.source: "../../assets/powerups/mushroom.png"
-    //property alias mushroom: mushroom
 }

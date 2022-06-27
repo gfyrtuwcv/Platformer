@@ -1,23 +1,17 @@
 import Felgo 3.0
 import QtQuick 2.0
-
 import "scenes"
 GameWindow {//游戏窗口
     id: gameWindow
     screenWidth: 960
     screenHeight: 640
+
         GameScene{//游戏界面
             id:gameScene
         }
-        LevelEditor{//游戏关卡编辑
-            gameNetworkItem: gameNetwork//用户生成关卡需要的组件id
-            toRemoveEntityTypes: ["prop","enemy","obstacles"]//应该删除的实体的数组
-            toStoreEntityTypes: ["prop","enemy","obstacles"]//存储关卡可中的实体
 
-            applicationJSONLevelsDirectory: "levels/"//存放关卡的目录
-            onLevelPublished: {//发布具有关卡Id的级别时，将调用
-            }
-
+        LevelScene{
+            id:levelScene
         }
 
         SelectLevelScene{//关卡界面
@@ -106,6 +100,15 @@ GameWindow {//游戏窗口
 
 //                }
 //            }
+            State {
+                name: "level"//关卡
+                PropertyChanges {
+                    target: levelScene; opacity:1
+                }
+                PropertyChanges {
+                    target: gameWindow; activeScene: levelScene
+                }
+            },
             State {
                 name: "game"//游戏
                 PropertyChanges {
