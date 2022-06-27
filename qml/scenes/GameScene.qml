@@ -6,6 +6,15 @@ SceneBase{//游戏场景
         id:scene
         width: 960
         height: 640
+
+        property string activeLevelFileName
+
+        property int time: 0
+
+        function setLevel(fileName){
+            activeLevelFileName = fileName
+        }
+
         Rectangle{
             anchors.fill: parent
             color: "white"

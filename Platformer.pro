@@ -76,7 +76,8 @@ DISTFILES += \
     qml/entities/Coin.qml \
     qml/entities/Enemybased.qml \
     qml/entities/Enemybased.qml \
-    qml/entities/MushroomMonster.qml \
+    qml/entities/Ground.qml \
+    qml/entities/Mushroom.qml \
     qml/entities/Obstaclesbased.qml \
     qml/entities/Obstaclesbased.qml \
     qml/entities/Platform.qml \
@@ -85,6 +86,8 @@ DISTFILES += \
     qml/entities/Propbased.qml \
     qml/entities/Propbased.qml \
     qml/entities/RoadBlock.qml \
+    qml/entities/Tile.qml \
+    qml/entities/TileEntityBase.qml \
     qml/levels/Level1.qml \
     qml/levels/Level2.qml \
     qml/scenes/GameScene.qml \

@@ -6,7 +6,7 @@ import QtMultimedia 5.0
 Item {
     id: audioManager
 
-    Component.onCompleted: handleMusic()
+    Component.onCompleted: changeBackGroundMusic()
 
     //背景音乐
     BackgroundMusic{
@@ -71,5 +71,37 @@ Item {
         source: "../assets/audio/sounds/click1.wav"
     }
 
+    function changeBackGroundMusic(){
+        if(activeScene === gameScene){
+//            if()
+        }
+    }
+
+    function playSound(sound){
+        if(sound === "playerJump")
+          playerJump.play()
+          else if(sound === "playerHit")
+          playerHit.play()
+        else if(sound === "playerDefeated")
+          playerDie.play()
+        else if(sound === "playerInvincible")
+          playerInvincible.play()
+        else if(sound === "collectCoin")
+          collectCoin.play()
+          else if(sound === "collectMushroom")
+          collectMushroom.play()
+        else if(sound === "finish")
+          finish.play()
+        else if(sound === "walkerMonsterDefeated")
+          opponentWalkerDie.play()
+        else if(sound === "jumperMonsterDefeated")
+          opponentJumperDie.play()
+        else if(sound === "start")
+          start.play()
+        else if(sound === "click")
+          click.play()
+        else
+          console.debug("unknown sound name:", sound)
+    }
 
 }
