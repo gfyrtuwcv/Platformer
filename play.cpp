@@ -1,9 +1,12 @@
 #include "play.h"
 
-play::play(QObject *parent=nullptr):QObject(parent)
+Play::Play(QObject *parent):QObject(parent),coinnum(0)
 {
 
 }
-void play::hello(){
-    qDebug<<"hello";
+int Play::coin(){
+    return coinnum;
+}
+void Play::setCoin(int a){
+    coinnum=a;
 }

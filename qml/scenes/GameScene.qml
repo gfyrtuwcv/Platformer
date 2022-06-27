@@ -44,11 +44,8 @@ SceneBase{//游戏场景
               var entityA = contact.fixtureA.getBody().target
               var entityB = contact.fixtureB.getBody().target
               if(entityA.entityType === "platform" && entityB.entityType === "player" &&
-                      entityA.y > entityB.y) {
-                  console.debug("platform y:"+entityA.y+"   player Y:"+entityB.y)
+                      entityA.y < entityB.y+entityB.height) {
                 contact.enabled = false//关闭平台碰撞
-              }else{
-                  contact.enabled=true
               }
             }
             /*EditableComponent{//可编辑的属性
@@ -72,6 +69,20 @@ SceneBase{//游戏场景
             y:0
             controller: controller
         }
+        JumperEnemy{
+            x:500
+            y:150
+        }
+
+        Coin{
+            x:200
+            y:500
+        }
+        Spikeball{
+            x:300
+            y:550
+        }
+
         RoadBlock{
             //x:width
             //y:500
@@ -128,6 +139,9 @@ SceneBase{//游戏场景
                     //player.foot.linearVelocity.x = 0
                     if(Math.abs(player.foot.linearVelocity.x) > 10) player.collider.linearVelocity.x /= 8
                     else player.foot.linearVelocity.x = 0
+                }
+                if(!player.islive) {
+                    //跳转结束界面
                 }
             }
         }

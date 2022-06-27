@@ -5,7 +5,7 @@ Obstaclesbased {
     entityId: "platform"
     entityType: "platform"
     image.source: "../../assets/platform/platform.png"
-    collider.categories:playform
+    collider.categories: playform
     collider.collidesWith: player | enemy | prop //定义碰撞
     collider.fixture.onBeginContact: {
         var otherEntity = other.getBody().target

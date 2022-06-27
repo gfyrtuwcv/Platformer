@@ -6,7 +6,10 @@ EntityBaseDraggable {
 
     property alias image: image
     property alias collider: collider
-    property bool iseat: false//是否被吃
+    property bool isCollected: false//是否被收集
+    image.visible: !isCollected
+    gridSize: 16//将实体位置捕获到网格中
+    colliderSize: width
     width: image.width
     height: image.height
     MultiResolutionImage {
@@ -15,15 +18,12 @@ EntityBaseDraggable {
     BoxCollider{//物理组件
         id:collider
         anchors.fill: parent
-
         categories:prop
         collidesWith: player | obstacles//定义碰撞
-
-        collisionTestingOnlyMode:false//使用物理进行碰撞测试，但不修改实体位置
-
+        collisionTestingOnlyMode:true//使用物理进行碰撞测试，但不修改实体位置
         bodyType: Body.Static//静态,不移动
-        fixture.onBeginContact: {// 当与另一个实体碰撞时，
+        /*fixture.onBeginContact: {// 当与另一个实体碰撞时，
 
-        }
+        }*/
     }
 }
