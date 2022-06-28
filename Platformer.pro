@@ -41,7 +41,7 @@ DEPLOYMENTFOLDERS += assetsFolder
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    play.cpp
+    Play.cpp
 
 
 android {
@@ -80,6 +80,7 @@ DISTFILES += \
     qml/entities/RoadBlock.qml \
     qml/entities/Spikeball.qml \
     qml/entities/Star.qml \
+    qml/entities/WalkerEnemy.qml \
     qml/levels/Level1.qml \
     qml/levels/Level2.qml \
     qml/scenes/FinishScene.qml \
@@ -91,4 +92,4 @@ DISTFILES += \
     qml/scenes/SelectLevelScene.qml
 
 HEADERS += \
-    play.h
+    Play.h

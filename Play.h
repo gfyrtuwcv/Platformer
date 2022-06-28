@@ -9,12 +9,8 @@ class Play : public QObject
     QML_SINGLETON
 public:
     Play(QObject *parent=nullptr);
-    Q_PROPERTY(int coin READ coin WRITE setCoin )
-    //Q_INVOKABLE void hello();
-    Q_INVOKABLE int coin();
-    Q_INVOKABLE void setCoin(int);
-private:
-    int coinnum;
+    int coinnum = 0;
+
 };
 
 #endif // PLAY_H

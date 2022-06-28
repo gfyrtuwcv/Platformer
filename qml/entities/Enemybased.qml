@@ -21,10 +21,10 @@ EntityBaseDraggable {
         collidesWith: player | obstacles | playform//定义碰撞
         force:Qt.point(50,-50)//持续力量
         onLinearVelocityChanged: {
-          if(linearVelocity.x > 50) linearVelocity.x = 50
-          if(linearVelocity.x < -50) linearVelocity.x = -50
-          if(linearVelocity.y > 50) linearVelocity.x = 50
-          if(linearVelocity.y < -50) linearVelocity.x = -50
+          if(linearVelocity.x > 150) linearVelocity.x = 150
+          if(linearVelocity.x < -150) linearVelocity.x = -150
+          if(linearVelocity.y > 150) linearVelocity.x = 150
+          if(linearVelocity.y < -150) linearVelocity.x = -150
         }
         //collisionTestingOnlyMode:true//使用物理进行碰撞测试，修改实体位置
 
