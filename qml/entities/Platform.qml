@@ -7,11 +7,9 @@ Obstaclesbased {
     image.source: "../../assets/platform/platform.png"
     collider.categories: playform
     collider.collidesWith: player | enemy | prop //定义碰撞
-    collider.fixture.onBeginContact: {
+/*    collider.fixture.onBeginContact: {
         var otherEntity = other.getBody().target
         if(otherEntity.entityType === "player"){
-            //collider.enabled=false
-            //collider.collidesWith=player | enemy | prop //| playerfoot//collisionTestingOnlyMode=true//collidesWith= prop | enemy | obstacles// | platform
         }
     }
 
@@ -21,21 +19,5 @@ Obstaclesbased {
             //enabled=true
              //collider.collisionTestingOnlyMode=false
         }
-    }/*
-
-    /*collider.fixture.onBeginContact: {
-        var otherEntity = other.getBody().target
-        if(otherEntity.entityType === "player") {
-          console.debug("contact platform begin")
-          player.contacts++
-        }
-      }
-
-      collider.fixture.onEndContact: {
-        var otherEntity = other.getBody().target
-        if(otherEntity.entityType === "player") {
-          console.debug("contact platform end")
-          player.contacts--
-        }
-      }*/
+    }*/
 }

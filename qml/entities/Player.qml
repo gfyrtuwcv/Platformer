@@ -7,7 +7,14 @@ EntityBaseDraggable {
     property alias image: image
     property alias collider: collider
     property alias foot: foot
+    property string normalimg: "../../assets/player/player.png"
+    //property string bigimg: "../../assets/player/+hd/player.png"
+    property string starimg: "../../assets/player/player_rainbow.png"
+    //property string starbigimg: "../../assets/player/+hd/player_rainbow.png"
+    property bool isstar: false//是否吃到星星
+    property bool noinvincible: true
     property int isjump: 0
+    property int life : 3//生命
     property int size:1//大小
     property bool islive: true//是否存活
     /*property int contacts: 0
@@ -19,7 +26,7 @@ EntityBaseDraggable {
     height: image.height
     MultiResolutionImage {
        id: image
-       source: "../../assets/player/player.png"
+       source: isstar ?starimg : normalimg
     }
     BoxCollider{//物理组件
         id:collider
@@ -32,32 +39,19 @@ EntityBaseDraggable {
         bodyType: Body.Dynamic//动态身体
         fixedRotation: true//不希望主体旋转
         collisionTestingOnlyMode:true//不会受到重力或其他物理力的影响
-
-        /*force:Qt.point(controller.xAxis*1700*2800,0)//持续力量Qt.point(1000,0)
-        onLinearVelocityChanged: {
-          if(linearVelocity.x > 150) linearVelocity.x = 150
-          if(linearVelocity.x < -150) linearVelocity.x = -150
-        }*/
         fixture.onBeginContact:{
             var other = other.getBody().target
-            if(other.entityType === "coin"){
-                //other.coin.disappear();//金币消失
-                //   +1
-            }
-            if(other.entityType === "mushroom"){
-                //player.resultsEnemy(other.mushroom)
-            }
             if(other.entityType === "obstacles" || other.entityType ==="platform"){
                 isjump=0;
             }
-            if(other.entityType ==="spilk"){
+            if(other.entityType ==="spilk" && noinvincible){
                 die()
             }
-            if(other.entityType ==="enemy"){
-                if(y>=other.y){
+            /*if(other.entityType ==="enemy"&&other.islive){
+                if((y+height)>=other.y){
                     die()
                 }
-            }
+            }*/
         }
     }
 
@@ -76,11 +70,21 @@ EntityBaseDraggable {
         }
         fixture.onBeginContact:{
             var other = other.getBody().target
-            if(other.entityType ==="enemy"){
-                other.islive=false
+            if(other.entityType ==="enemy" && noinvincible){
+                if((y+parent.height+1)<other.y) other.islive=false
+                else die()
             }
         }
-    }/**/
+    }
+    Timer{
+        id:invincible//无敌时间
+        interval: 5000//设置触发器之间的间隔，以毫秒为单位
+        repeat: false//在指定的时间间隔内重复触发
+        onTriggered: {
+            isstar=false
+            noinvincible=true
+        }
+    }
 
     Timer{
         id:jumpControl
@@ -93,17 +97,42 @@ EntityBaseDraggable {
         }
     }
 
+    onIsstarChanged: {
+        invincible.start()//无敌时间
+        noinvincible = false
+    }
+
+
+    function sizeChang(){
+        if(size>2) size=2
+        if(size==2){
+            image.width+=size*15
+            image.height+=size*15
+
+        }else{
+            image.width-=2*15
+            image.height-=2*15
+        }
+    }
+
     function jump(){
         if(isjump <2){
             isjump++
             jumpControl.start()
         }
     }
+
     function die(){
-        size--
-        if(size<1) {
-            console.debug("your die")
-            islive= false
+        if(size>1) {
+            size--
+            sizeChang()
+        }else{
+            life--
+            console.debug("your remain "+life+" life")
+            if(life<1) {
+                console.debug("your die")
+                islive = false
+            }
         }
     }
 }

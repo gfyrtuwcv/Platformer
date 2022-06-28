@@ -1,17 +1,22 @@
 import QtQuick 2.0
 
 Enemybased {
-    property bool down: true
-    collider.force:Qt.point(0,-50)
-    property string img1: "../../assets/opponent/opponent_jumper.png"
-    property string img2: "../../assets/opponent/opponent_jumper_dead.png"
+    property int direction: 1//方向
+    collider.force:Qt.point(direction*10,0)
+    property string img1: "../../assets/opponent/opponent_walker.png"
+    property string img2: "../../assets/opponent/opponent_walker_dead.png"
     image.source:islive ?img1 : img2//对应图片
     function move(){
-        collider.linearVelocity.x=Math.random()*10-5//随机数
-        collider.linearVelocity.y=-Math.random()*350//随机数
+        if(collider.linearVelocity.x === 0) collider.linearVelocity.x=direction*50
+        //collider.linearVelocity.y=-Math.random()*350//随机数
+        console.debug(collider.linearVelocity.x)
     }
-    collider.fixture.onBeginContact:{
-        down=true
+    collider.fixture.onBeginContact: {
+        direction=-direction//变向
+    }
+
+    collider.fixture.onEndContact:{
+        direction=-direction//变向
     }
     Timer{
         id:control
@@ -25,10 +30,7 @@ Enemybased {
                 collider.collidesWith= obstacles
                 //removeEntity()
             }else{
-                if(down){
-                    move()
-                    down=false
-                }
+                move()
             }
         }
     }

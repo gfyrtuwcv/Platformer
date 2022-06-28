@@ -57,12 +57,7 @@ SceneBase{//游戏场景
               var entityA = contact.fixtureA.getBody().target
               var entityB = contact.fixtureB.getBody().target
               if(entityA.entityType === "platform" && entityB.entityType === "player" &&
-<<<<<<< HEAD
                       entityA.y  < entityB.y + entityB.height) {
-                  console.debug("platform y:"+entityA.y+"   player Y:"+entityB.y)
-=======
-                      entityA.y < entityB.y+entityB.height) {
->>>>>>> origin/main
                 contact.enabled = false//关闭平台碰撞
               }
             }
@@ -80,6 +75,14 @@ SceneBase{//游戏场景
             x:160
             y:500
         }
+        Platform{
+            x:130
+            y:500
+        }
+        WalkerEnemy{
+            x:150
+            y:450
+        }
 
         Platform{
             x:300
@@ -92,9 +95,13 @@ SceneBase{//游戏场景
             y:0
             controller: controller
         }
-        JumperEnemy{
+        Mushroom{
             x:500
-            y:150
+            y:350
+        }
+        Star{
+            x:400
+            y:550
         }
 
         Coin{
