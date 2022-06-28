@@ -3,15 +3,8 @@ import QtQuick 2.0
 Obstaclesbased {
     entityId: "finish"
     image.source: "../../assets/finish/finish.png"
-<<<<<<< HEAD
-    signal end
-    collider.fixture.onBeginContact: {
-        //跳转通关界面
-        end()
-=======
     signal end//结束信号
     collider.fixture.onBeginContact: {
         end()//发出信号,跳转通关界面
->>>>>>> origin/main
     }
 }

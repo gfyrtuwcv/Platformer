@@ -9,7 +9,7 @@ Enemybased {
     function move(){
         if(collider.linearVelocity.x === 0) collider.linearVelocity.x=direction*50
         //collider.linearVelocity.y=-Math.random()*350//随机数
-        console.debug(collider.linearVelocity.x)
+        //console.debug(collider.linearVelocity.x)
     }
     collider.fixture.onBeginContact: {
         direction=-direction//变向
@@ -22,7 +22,7 @@ Enemybased {
         id:control
         interval: 500//设置触发器之间的间隔，以毫秒为单位
         repeat: true//在指定的时间间隔内重复触发
-        running: true
+        //running: true
         onTriggered: {
             if(!islive){
                 image.visible=false

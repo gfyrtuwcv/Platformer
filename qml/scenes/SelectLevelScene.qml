@@ -7,6 +7,7 @@ SceneBase{
 
     //
     signal levelPressed(string selectedLevel)
+    signal productPressed
 
     Rectangle{
         anchors.fill: parent.gameWindowAnchorItem
@@ -14,7 +15,19 @@ SceneBase{
     }
 
     ButtonBase{
-        text: "Back"
+        text: qsTr("Production levels")
+
+        anchors.bottom: selectLevelScene.bottom
+        anchors.topMargin: 8
+
+        anchors.right: selectLevelScene.right
+        anchors.rightMargin: 8
+
+        onClicked: productPressed()
+    }
+
+    ButtonBase{
+        text: qsTr("Back")
 
         anchors.top: selectLevelScene.top
         anchors.topMargin: 8

@@ -77,7 +77,8 @@ DISTFILES += \
     qml/entities/Platform.qml \
     qml/entities/Player.qml \
     qml/entities/Propbased.qml \
-    qml/entities/RoadBlock.qml \
+    qml/entities/RoadBlockDirt.qml \
+    qml/entities/RoadBlockGrass.qml \
     qml/entities/Spikeball.qml \
     qml/entities/Star.qml \
     qml/entities/WalkerEnemy.qml \

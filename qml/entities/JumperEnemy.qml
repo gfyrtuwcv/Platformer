@@ -17,7 +17,7 @@ Enemybased {
         id:control
         interval: 500//设置触发器之间的间隔，以毫秒为单位
         repeat: true//在指定的时间间隔内重复触发
-        running: true
+        //running: true
         onTriggered: {
             if(!islive){
                 image.visible=false

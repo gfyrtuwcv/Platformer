@@ -15,6 +15,7 @@ GameWindow {//游戏窗口
 
         LevelScene{
             id:levelScene
+            onBackPressed: gameWindow.state="selectLevel"
         }
 
         SelectLevelScene{//关卡界面
@@ -25,6 +26,7 @@ GameWindow {//游戏窗口
                 gameScene.setLevel(selectedLevel)
                 gameWindow.state = "game"
             }
+            onProductPressed: gameWindow.state = "level"
         }
 
         FelgoGameNetwork{//游戏排行榜、成就和挑战

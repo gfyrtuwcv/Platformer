@@ -58,10 +58,7 @@ SceneBase{//游戏场景
               var entityB = contact.fixtureB.getBody().target
               if(entityA.entityType === "platform" && entityB.entityType === "player" &&
                       entityA.y  < entityB.y + entityB.height) {
-<<<<<<< HEAD
-                  console.debug("platform y:"+entityA.y+"   player Y:"+entityB.y)
-=======
->>>>>>> origin/main
+                //console.debug("platform y:"+entityA.y+"   player Y:"+entityB.y)
                 contact.enabled = false//关闭平台碰撞
             }
             /*EditableComponent{//可编辑的属性
@@ -116,7 +113,7 @@ SceneBase{//游戏场景
             y:550
         }
 
-        RoadBlock{
+        RoadBlockGrass{
             //x:width
             //y:500
             anchors {
