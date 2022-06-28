@@ -2,16 +2,19 @@
 #define PLAY_H
 #include <QObject>
 #include <QQmlEngine>
-class play : public QObject
+class Play : public QObject
 {
     Q_OBJECT
     QML_ELEMENT
     QML_SINGLETON
 public:
-    play(QObject *parent=nullptr);
-    Q_INVOKABLE void hello();
+    Play(QObject *parent=nullptr);
+    Q_PROPERTY(int coin READ coin WRITE setCoin )
+    //Q_INVOKABLE void hello();
+    Q_INVOKABLE int coin();
+    Q_INVOKABLE void setCoin(int);
 private:
-
+    int coinnum;
 };
 
 #endif // PLAY_H

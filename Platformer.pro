@@ -70,6 +70,10 @@ DISTFILES += \
     qml/common/ImageButton.qml \
     qml/entities/Coin.qml \
     qml/entities/Enemybased.qml \
+<<<<<<< HEAD
+=======
+    qml/entities/JumperEnemy.qml \
+>>>>>>> origin/main
     qml/entities/Mushroom.qml \
     qml/entities/Finish.qml \
     qml/entities/Obstaclesbased.qml \

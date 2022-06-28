@@ -9,6 +9,7 @@ EntityBaseDraggable {
     property alias foot: foot
     property int isjump: 0
     property int size:1//大小
+    property bool islive: true//是否存活
     /*property int contacts: 0
     state: contacts > 0 ? "walking" : "jumping"//不同状态切换*/
     property var controller
@@ -49,8 +50,17 @@ EntityBaseDraggable {
             if(other.entityType === "obstacles" || other.entityType ==="platform"){
                 isjump=0;
             }
+            if(other.entityType ==="spilk"){
+                die()
+            }
+            if(other.entityType ==="enemy"){
+                if(y>=other.y){
+                    die()
+                }
+            }
         }
     }
+
     BoxCollider{
         id:foot
         //categories:player//设置碰撞
@@ -59,10 +69,16 @@ EntityBaseDraggable {
         bodyType: Body.Dynamic//动态身体
         height:1
         anchors.bottom: parent.bottom
-        force:Qt.point(controller.xAxis*17*25,0)//持续力量Qt.point(1000,0)
+        force:Qt.point(controller.xAxis*17*25,0)//持续力量
         onLinearVelocityChanged: {
           if(linearVelocity.x > 170) linearVelocity.x = 170
           if(linearVelocity.x < -170) linearVelocity.x = -170
+        }
+        fixture.onBeginContact:{
+            var other = other.getBody().target
+            if(other.entityType ==="enemy"){
+                other.islive=false
+            }
         }
     }/**/
 
@@ -81,6 +97,13 @@ EntityBaseDraggable {
         if(isjump <2){
             isjump++
             jumpControl.start()
+        }
+    }
+    function die(){
+        size--
+        if(size<1) {
+            console.debug("your die")
+            islive= false
         }
     }
 }

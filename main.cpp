@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
     felgo.initialize(&engine);
     felgo.setLicenseKey(PRODUCT_LICENSE_KEY);
-    Play data;
+    Play *data;
     engine.rootContext()->setContextProperty("playdata", data);
     //qmlRegisterType<Enemybased>("based",1,0,"Enemybased");//注册c++类至qml;
     //qmlRegisterType<Obstaclesbased>("based",1,0,"Obstaclesbased");
