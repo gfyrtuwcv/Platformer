@@ -41,11 +41,6 @@ DEPLOYMENTFOLDERS += assetsFolder
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    Enemybased.cpp \
-    c++/Enemybased.cpp \
-    c++/Obstaclesbased.cpp \
-    c++/Playerbased.cpp \
-    c++/Propbased.cpp \
     play.cpp
 
 
@@ -68,37 +63,22 @@ macx {
 }
 
 DISTFILES += \
-    ../untitled/qml/MainForm.qml \
     qml/AudioManager.qml \
     qml/Gamescene.qml \
     qml/Main.qml \
     qml/common/ButtonBase.qml \
     qml/common/ImageButton.qml \
     qml/entities/Coin.qml \
-
     qml/entities/Enemybased.qml \
-
-    qml/entities/Ground.qml \
     qml/entities/Mushroom.qml \
-
     qml/entities/Finish.qml \
-    qml/entities/MushroomMonster.qml \
-
     qml/entities/Obstaclesbased.qml \
-
     qml/entities/Platform.qml \
-
     qml/entities/Player.qml \
-
     qml/entities/Propbased.qml \
     qml/entities/RoadBlock.qml \
-<<<<<<< HEAD
-    qml/entities/Tile.qml \
-    qml/entities/TileEntityBase.qml \
-=======
     qml/entities/Spikeball.qml \
     qml/entities/Star.qml \
->>>>>>> origin/main
     qml/levels/Level1.qml \
     qml/levels/Level2.qml \
     qml/scenes/GameScene.qml \
@@ -109,12 +89,4 @@ DISTFILES += \
     qml/scenes/SelectLevelScene.qml
 
 HEADERS += \
-    Enemybased.h \
-    Obstaclesbased.h \
-    Playerbased.h \
-    Propbased.h \
-    c++/Enemybased.h \
-    c++/Obstaclesbased.h \
-    c++/Playerbased.h \
-    c++/Propbased.h \
     play.h

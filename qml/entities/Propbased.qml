@@ -5,15 +5,15 @@ EntityBaseDraggable {
     entityType: "prop"
 
     property alias image: image
-    property alias collider: collider
-    property bool iseat: false//是否被吃
+    property alias colliderBox: colliderBox
+    property bool isCollected: false//是否被收集
     width: image.width
     height: image.height
     MultiResolutionImage {
         id:image
     }
     BoxCollider{//物理组件
-        id:collider
+        id:colliderBox
         anchors.fill: parent
 
         categories:prop
@@ -25,5 +25,5 @@ EntityBaseDraggable {
         fixture.onBeginContact: {// 当与另一个实体碰撞时，
 
         }
-    }
+    }    
 }

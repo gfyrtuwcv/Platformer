@@ -1,16 +1,20 @@
 import QtQuick 2.0
 import Felgo 3.0
 import "../entities"
+import "../common"
 
 SceneBase{//游戏场景
         id:scene
         width: 960
         height: 640
 
+
+
         property string activeLevelFileName
 
         property int time: 0
 
+        signal backButtonPressed3
         function setLevel(fileName){
             activeLevelFileName = fileName
         }
@@ -26,6 +30,15 @@ SceneBase{//游戏场景
                 property string bg2: "../../assets/backgroundImage/night_bg.png"
                 source: bg0
             }
+        }
+
+        ButtonBase{
+            text: "Back"
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+            anchors.top: parent.top
+            anchors.topMargin: 10
+            onClicked: backButtonPressed3()
         }
 
         PhysicsWorld {//模拟物理世界,包含所有物理实体
@@ -44,7 +57,7 @@ SceneBase{//游戏场景
               var entityA = contact.fixtureA.getBody().target
               var entityB = contact.fixtureB.getBody().target
               if(entityA.entityType === "platform" && entityB.entityType === "player" &&
-                      entityA.y > entityB.y) {
+                      entityA.y  < entityB.y + entityB.height) {
                   console.debug("platform y:"+entityA.y+"   player Y:"+entityB.y)
                 contact.enabled = false//关闭平台碰撞
               }else{
@@ -64,6 +77,11 @@ SceneBase{//游戏场景
         Platform{
             x:160
             y:500
+        }
+
+        Platform{
+            x:300
+            y:400
         }
 
         Player{

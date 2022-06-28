@@ -4,4 +4,5 @@ Obstaclesbased {
     entityId: "finish"
     image.source: "../../assets/finish/finish.png"
 
+
 }

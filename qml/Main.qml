@@ -8,6 +8,9 @@ GameWindow {//游戏窗口
 
         GameScene{//游戏界面
             id:gameScene
+            onBackButtonPressed3: {
+                gameWindow.state = "selectLevel"
+            }
         }
 
         LevelScene{
@@ -76,7 +79,7 @@ GameWindow {//游戏窗口
           状态
 
         */
-        state: "game"
+        state: "menu"
         //activeScene: gameScene
         states: [
             State {

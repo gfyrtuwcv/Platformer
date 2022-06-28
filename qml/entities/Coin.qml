@@ -5,30 +5,27 @@ Propbased{
     id: coin
     entityId: "coin"
 
-    property bool collected: false
-    //property alias coins: coin
+    image.visible: !isCollected
 
-    image.visible: !collected
-
-    colliderComponent: collider
+    colliderComponent: colliderCircle
     image.source: "../../assets/coin/coin.png"
 
     CircleCollider{
-        id: collected
+        id: colliderCircle
 
         radius: parent.width / 2 - 3
 
         x:3
         y:3
 
-        active: !collected
+        active: !isCollected
 
-        bodyType: Body.Static
-        collisionTestingOnlyMode: true
+        bodyType: Body.Static//静态实体，不移动
+        collisionTestingOnlyMode: true//使用物理进行碰撞测试，但不修改实体位置
 
-        categories: Box.Category6
+        categories: prop
 
-        collidesWith: Box.Category1
+        collidesWith: player | obstacles
     }
 
     function collect(){

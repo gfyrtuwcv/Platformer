@@ -34,7 +34,7 @@ SceneBase{
             width: 50
             height: 50
             onClicked: {
-                levelPressed("Level1.qml")
+                levelPressed("GameScene.qml")
             }
         }
         ButtonBase{
