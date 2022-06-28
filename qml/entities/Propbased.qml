@@ -5,16 +5,14 @@ EntityBaseDraggable {
     entityType: "prop"
 
     property alias image: image
-<<<<<<< HEAD
+
     property alias colliderBox: colliderBox
     property bool isCollected: false//是否被收集
-=======
-    property alias collider: collider
-    property bool isCollected: false//是否被收集
+
+    //property alias collider: collider
     image.visible: !isCollected
     gridSize: 16//将实体位置捕获到网格中
     colliderSize: width
->>>>>>> origin/main
     width: image.width
     height: image.height
     MultiResolutionImage {
@@ -35,5 +33,4 @@ EntityBaseDraggable {
 =======
         }*/
     }
->>>>>>> origin/main
 }

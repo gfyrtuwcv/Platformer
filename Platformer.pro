@@ -70,10 +70,7 @@ DISTFILES += \
     qml/common/ImageButton.qml \
     qml/entities/Coin.qml \
     qml/entities/Enemybased.qml \
-<<<<<<< HEAD
-=======
     qml/entities/JumperEnemy.qml \
->>>>>>> origin/main
     qml/entities/Mushroom.qml \
     qml/entities/Finish.qml \
     qml/entities/Obstaclesbased.qml \
@@ -85,6 +82,7 @@ DISTFILES += \
     qml/entities/Star.qml \
     qml/levels/Level1.qml \
     qml/levels/Level2.qml \
+    qml/scenes/FinishScene.qml \
     qml/scenes/GameScene.qml \
     qml/scenes/LevelScene.qml \
     qml/scenes/MenuScene.qml \

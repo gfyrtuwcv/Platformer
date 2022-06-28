@@ -41,6 +41,14 @@ GameWindow {//游戏窗口
 
         }
 
+        FinishScene{
+            id: finishScene
+
+            //onRestartPressed: gameWindow.state="game"
+            onLevelsPressed: gameWindow.state = "selectLevel"
+            onMenuPressed: gameWindow.state = "menu"
+        }
+
 
         FontLoader {//加载字体
           id: marioFont
@@ -79,7 +87,7 @@ GameWindow {//游戏窗口
           状态
 
         */
-        state: "menu"
+        state: "finish"
         //activeScene: gameScene
         states: [
             State {
@@ -132,6 +140,15 @@ GameWindow {//游戏窗口
                 }
                 PropertyChanges {
                     target: gameWindow; activeScene:optionScene
+                }
+            },
+            State {
+                name: "finish"
+                PropertyChanges {
+                    target: finishScene; opacity: 1
+                }
+                PropertyChanges {
+                    target: gameWindow; opacity: 1
                 }
             }
         ]

@@ -10,9 +10,9 @@ Rectangle{
     height: buttonImage.height+paddingVertical
 
     color: "#ffffff"
-    //从文本元素到左右两侧矩形的水平边距
+    //从图片元素到左右两侧矩形的水平边距
     property int paddingHorizontal: 2
-    //从文本元素到顶部和底部矩形的垂直边距
+    //从图片元素到顶部和底部矩形的垂直边距
     property int paddingVertical: 2
 
    property alias imageSource: buttonImage.source

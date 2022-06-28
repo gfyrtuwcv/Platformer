@@ -57,14 +57,9 @@ SceneBase{//游戏场景
               var entityA = contact.fixtureA.getBody().target
               var entityB = contact.fixtureB.getBody().target
               if(entityA.entityType === "platform" && entityB.entityType === "player" &&
-<<<<<<< HEAD
                       entityA.y  < entityB.y + entityB.height) {
                   console.debug("platform y:"+entityA.y+"   player Y:"+entityB.y)
-=======
-                      entityA.y < entityB.y+entityB.height) {
->>>>>>> origin/main
                 contact.enabled = false//关闭平台碰撞
-              }
             }
             /*EditableComponent{//可编辑的属性
                 target: physicsWorld
@@ -115,6 +110,12 @@ SceneBase{//游戏场景
               right: scene.right
             }
         }
+        Finish{
+            onEnd: {
+                gameWindow.state="finish"
+            }
+        }
+
         Rectangle{
             enabled: true//启用和禁用触摸处理
             anchors.right: parent.right
@@ -170,4 +171,4 @@ SceneBase{//游戏场景
         }
     }
 
-
+}

@@ -4,15 +4,12 @@ import Felgo 3.0
 Propbased{
     id: coin
     entityId: "coin"
-<<<<<<< HEAD
 
     image.visible: !isCollected
 
     colliderComponent: colliderCircle
-=======
->>>>>>> origin/main
     image.source: "../../assets/coin/coin.png"
-    collider.fixture.onBeginContact:{
+    colliderBox.fixture.onBeginContact:{
         var other = other.getBody().target
         if(other.entityType === "player"){
             //var num=playdata.coin()//得到金币数量
@@ -23,10 +20,8 @@ Propbased{
         }
     }
 
-<<<<<<< HEAD
     CircleCollider{
         id: colliderCircle
-=======
     /*CircleCollider{
         id: collected
 >>>>>>> origin/main
@@ -56,6 +51,8 @@ Propbased{
     function reset(){
         coin.collected = false
     }*/
+
+    }
 }
 
 
