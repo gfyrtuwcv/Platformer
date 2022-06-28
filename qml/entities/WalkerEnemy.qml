@@ -1,6 +1,7 @@
 import QtQuick 2.0
 
 Enemybased {
+    variationType:"walker"
     property int direction: 1//方向
     collider.force:Qt.point(direction*10,0)
     property string img1: "../../assets/opponent/opponent_walker.png"

@@ -2,7 +2,7 @@ import QtQuick 2.0
 import Felgo 3.0
 //平台
 Obstaclesbased {
-    entityId: "platform"
+    //entityId: "platform"
     entityType: "platform"
     image.source: "../../assets/platform/platform.png"
     collider.categories: playform

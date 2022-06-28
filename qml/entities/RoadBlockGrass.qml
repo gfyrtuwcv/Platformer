@@ -2,9 +2,6 @@ import QtQuick 2.0
 import Felgo 3.0
 //道路方块
 Obstaclesbased{
-    id:roadGrass
-    entityId: "roadGrass"
-    //property alias friction: collider.friction
-    //property alias restitution: collider.restitution
+    variationType: "roadGrass"
     image.source: "../../assets/ground/ground_grass.png"
 }

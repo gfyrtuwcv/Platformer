@@ -1,10 +1,13 @@
 import QtQuick 2.0
 //终点
 Obstaclesbased {
-    entityId: "finish"
+    variationType: "finish"
     image.source: "../../assets/finish/finish.png"
     signal end//结束信号
     collider.fixture.onBeginContact: {
-        end()//发出信号,跳转通关界面
+        var other = other.getBody().target
+        if(other.entityType === "player"){
+            end()//发出信号,跳转通关界面
+        }
     }
 }

@@ -7,10 +7,12 @@ EntityBaseDraggable {
     property alias image: image
     property alias collider: collider
     property alias foot: foot
+    property int savex: 0//存储的玩家位置
+    property int savey: 0
+    x:savex
+    y:savey
     property string normalimg: "../../assets/player/player.png"
-    //property string bigimg: "../../assets/player/+hd/player.png"
     property string starimg: "../../assets/player/player_rainbow.png"
-    //property string starbigimg: "../../assets/player/+hd/player_rainbow.png"
     property bool isstar: false//是否吃到星星
     property bool noinvincible: true
     property int isjump: 0
@@ -19,7 +21,7 @@ EntityBaseDraggable {
     property bool islive: true//是否存活
     /*property int contacts: 0
     state: contacts > 0 ? "walking" : "jumping"//不同状态切换*/
-    property var controller
+    property var controller: controller
     //gridSize: 16//将实体位置捕获到网格中
     //colliderSize: width
     width: image.width
@@ -102,8 +104,12 @@ EntityBaseDraggable {
         noinvincible = false
     }
 
+    function resetPosition(){//重置位置
+        x=savex
+        y=savey
+    }
 
-    function sizeChang(){
+    function sizeChang(){//改变大小
         if(size>2) size=2
         if(size==2){
             image.width+=size*15
@@ -115,14 +121,14 @@ EntityBaseDraggable {
         }
     }
 
-    function jump(){
+    function jump(){//跳
         if(isjump <2){
             isjump++
             jumpControl.start()
         }
     }
 
-    function die(){
+    function die(){//死
         if(size>1) {
             size--
             sizeChang()
@@ -135,5 +141,6 @@ EntityBaseDraggable {
             }
         }
     }
+
 }
 

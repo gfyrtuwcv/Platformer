@@ -8,16 +8,18 @@ SceneBase{//游戏场景
         width: 960
         height: 640
 
-
-
         property string activeLevelFileName
-
+        property var levelEditor
         property int time: 0
 
         signal backButtonPressed3
         function setLevel(fileName){
-            activeLevelFileName = fileName
+            //activeLevelFileName = fileName
+            levelEditor.removeCurrentLevel ()
+            levelEditor.loadAllLevelsFromStorageLocation(levelEditor.applicationJSONLevelsLocation)
+            player.resetPosition()
         }
+
 
         Rectangle{
             anchors.fill: parent
@@ -29,6 +31,20 @@ SceneBase{//游戏场景
                 property string bg1: "../../assets/backgroundImage/dusk_bg.png"
                 property string bg2: "../../assets/backgroundImage/night_bg.png"
                 source: bg0
+            }
+            EntityBase{
+                anchors.top: parent.bottom
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: 1
+                BoxCollider{
+                    id:wall
+                    anchors.fill: parent
+                    bodyType: Body.Static//静态,不移动
+                    fixture.onBeginContact:{
+                        player.resetPosition()
+                    }
+                }
             }
         }
 
@@ -60,18 +76,17 @@ SceneBase{//游戏场景
                       entityA.y  < entityB.y + entityB.height) {
                 //console.debug("platform y:"+entityA.y+"   player Y:"+entityB.y)
                 contact.enabled = false//关闭平台碰撞
+                 }
             }
-            /*EditableComponent{//可编辑的属性
-                target: physicsWorld
-                editableType: "Balance"
-                defaultGroup: "Physics"
-                properties: {
-                  "gravityY": {"min": 0, "max": 100, "label": "Gravity"}
-                }
-            }*/
-
         }
-        Platform{
+
+
+        Player{
+            id:player
+            z:3
+            controller: controller
+        }
+        /*Platform{
             x:160
             y:500
         }
@@ -114,19 +129,22 @@ SceneBase{//游戏场景
         }
 
         RoadBlockGrass{
-            //x:width
-            //y:500
+            /*x:0
+            y:500
             anchors {
               bottom: scene.bottom
               left: scene.left
               right: scene.right
             }
-        }
-        Finish{
+        }*/
+
+        /*Finish{
+            x:600
+            y:550
             onEnd: {
                 gameWindow.state="finish"
             }
-        }
+        }*/
 
         Rectangle{
             enabled: true//启用和禁用触摸处理
@@ -157,6 +175,14 @@ SceneBase{//游戏场景
         Keys.forwardTo: controller
         TwoAxisController {//设置按键
           id: controller
+          inputActionsToKeyCode: {
+              "up": Qt.Key_Up,
+              "down": Qt.Key_Down,
+              "left": Qt.Key_Left,
+              "right": Qt.Key_Right,
+              //"fire": Qt.Key_Return
+          }
+
           onInputActionPressed: {
             console.debug("key pressed actionName " + actionName + xAxis + "   " + yAxis)
             if(actionName == "up") {
@@ -164,6 +190,7 @@ SceneBase{//游戏场景
             }
           }
         }
+
         Timer{
             id: updateTimer
             interval: 30//设置触发器之间的间隔，以毫秒为单位
@@ -173,14 +200,12 @@ SceneBase{//游戏场景
                 var xAxis = controller.xAxis;
                 if(xAxis === 0) {
                     //player.foot.linearVelocity.x = 0
-                    if(Math.abs(player.foot.linearVelocity.x) > 10) player.collider.linearVelocity.x /= 8
+                    if(Math.abs(player.foot.linearVelocity.x) > 10) player.foot.linearVelocity.x /= 8
                     else player.foot.linearVelocity.x = 0
                 }
-                if(!player.islive) {
+                /*if(!player.islive) {
                     //跳转结束界面
-                }
+                }*/
             }
         }
-    }
-
 }

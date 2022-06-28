@@ -8,14 +8,10 @@ GameWindow {//游戏窗口
 
         GameScene{//游戏界面
             id:gameScene
+            levelEditor:levelScene.levelEditor
             onBackButtonPressed3: {
                 gameWindow.state = "selectLevel"
             }
-        }
-
-        LevelScene{
-            id:levelScene
-            onBackPressed: gameWindow.state="selectLevel"
         }
 
         SelectLevelScene{//关卡界面
@@ -27,11 +23,15 @@ GameWindow {//游戏窗口
                 gameWindow.state = "game"
             }
             onProductPressed: gameWindow.state = "level"
+            LevelScene{
+                id:levelScene
+                onBackPressed: gameWindow.state="selectLevel"
+            }
         }
 
-        FelgoGameNetwork{//游戏排行榜、成就和挑战
+        /*FelgoGameNetwork{//游戏网络组件
             id:gameNetwork
-        }
+        }*/
 
         MenuScene{//菜单界面
             id:menuScene
@@ -89,7 +89,7 @@ GameWindow {//游戏窗口
           状态
 
         */
-        state: "finish"
+        state: "menu"
         //activeScene: gameScene
         states: [
             State {

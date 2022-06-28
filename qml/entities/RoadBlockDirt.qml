@@ -1,7 +1,6 @@
 import QtQuick 2.0
 //道路方块
 Obstaclesbased{
-    id:roadDirt
-    entityId: "roadDirt"
+    variationType: "roadDirt"
     image.source: "../../assets/ground/ground_dirt.png"
 }

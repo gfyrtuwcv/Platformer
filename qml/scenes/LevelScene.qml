@@ -5,6 +5,7 @@ import "../entities"
 SceneBase {
     id:scene
     signal backPressed//返回信号
+    property alias levelEditor: levelEditor
     Rectangle{
         anchors.fill: parent
         color: "white"
@@ -28,21 +29,33 @@ SceneBase {
     }
     LevelEditor{//游戏关卡编辑
         id:levelEditor
+        //Component.onCompleted: levelEditor.loadAllLevelsFromStorageLocation(authorGeneratedLevelsLocation)
+
         //gameNetworkItem: gameNetwork//用户生成关卡需要的组件id
-        toRemoveEntityTypes: ["prop","enemy","obstacles"]//应该删除的实体的数组
-        toStoreEntityTypes: ["prop","enemy","obstacles"]//存储关卡可中的实体
+        toRemoveEntityTypes: ["prop","enemy","obstacles","platform","coin","spilk"]//应该删除的实体的数组
+        toStoreEntityTypes: ["prop","enemy","obstacles","platform","coin","spilk"]//存储关卡可中的实体
         //存放关卡的目录
         applicationJSONLevelsDirectory: "../../levels/"//查找applicationJSONLevels的目录
         /*onLevelPublished: {//发布具有关卡Id的级别时，将调用
         }*/
+        onLevelPublished: {
+          // 发布带有levelId的关卡时保存
+        }
 
     }
     LevelSelectionList{
-            width: 150
-            levelMetaDataArray: levelEditor.authorGeneratedLevels//将玩家存储的关卡与关卡列表连接起来
-           /* onLevelSelected: {
-                levelEditor.loadSingleLevel(levelData)// LevelSelectionScene传递当前选择的级别信息，其中包含levelMetaData作为levelData参数
-            }*/
+        id:levelSelectionList
+        width: 150
+        height: 100
+        visible: false
+        anchors.left: parent.left
+        levelMetaDataArray: levelEditor.authorGeneratedLevels//将玩家存储的关卡与关卡列表连接起来
+        onLevelSelected: {
+            levelEditor.loadSingleLevel(levelData)// LevelSelectionScene传递当前选择的级别信息，其中包含levelMetaData作为levelData参数
+        }
+    }
+    LevelLoader{
+        id:levelLoader
     }
 
     ItemEditor{//项编辑器
@@ -65,57 +78,63 @@ SceneBase {
             onClicked: buildEntityButtons.visible = !buildEntityButtons.visible
             anchors.right: parent.right
           }
-          /*SimpleButton {
-            text: qsTr("clear")
-            onClicked: entityManager.removeAllEntities()//clear.visible = !clear.visible
-            anchors.right: parent.right
-          }
-          Column{
-              id:clear
-              visible: false
-              anchors.right: parent.right
-              SimpleButton {
-                 text: qsTr("clear all obstacles")
-                 onClicked:entityManager.removeEntitiesByFilter(["obstacles"])
-              }
-              SimpleButton {
-                 text: qsTr("clear all prop")
-                 onClicked:entityManager.removeEntitiesByFilter(["prop"])
-              }
-              SimpleButton {
-                 text: qsTr("clear all enemy")
-                 onClicked:entityManager.removeEntitiesByFilter(["enemy"])
-              }
-              SimpleButton {
-                 text: qsTr("clear all")
-                 onClicked:entityManager.removeEntitiesByFilter(["obstacles","prop","enemy"])
-              }
-          }*/
           SimpleButton {
             text: qsTr("New Level")
             onClicked: levelEditor.createNewLevel()
             anchors.right: parent.right
           }
           SimpleButton {
-            text: qsTr("Save")
-            onClicked: levelEditor.exportLevelAsFile ()//nativeUtils.displayTextInput("Enter levelName","",levelEditor.currentLevelName)
+            text: qsTr("clear")
+            onClicked: clear.visible = !clear.visible
             anchors.right: parent.right
-
-            Connections{
-                target: nativeUtils//显示消息框和输入对话框组件
-                onTextInputFinfished:{
-                   // if(accepted) {
-                        levelEditor.saveCurrentLevel( {levelMetaData: {levelName: enteredText}} )//保存已加载关卡的当前LevelData,只读，并且会随着每一次关卡操作(如保存、加载或创建新关卡)而更新。
-                        levelEditor.exportLevelAsFile ()
-                   // }
-                }
-            }
+          }
+          Column{
+              id:clear
+              visible: false
+              spacing: 5
+              anchors.right: parent.right
+              SimpleButton {
+                 anchors.right: parent.right
+                 text: qsTr("clear all obstacles")
+                 onClicked:entityManager.removeEntitiesByFilter(["obstacles","platform","spilk"])
+              }
+              SimpleButton {
+                 anchors.right: parent.right
+                 text: qsTr("clear all prop")
+                 onClicked:entityManager.removeEntitiesByFilter(["prop","coin"])
+              }
+              SimpleButton {
+                 anchors.right: parent.right
+                 text: qsTr("clear all enemy")
+                 onClicked:entityManager.removeEntitiesByFilter(["enemy"])
+              }
+              SimpleButton {
+                 anchors.right: parent.right
+                 text: qsTr("clear all")
+                 onClicked:entityManager.removeAllEntities()
+              }
           }
           SimpleButton {
-            text: qsTr("Load")
-            //onClicked: buildEntityButtons.visible = !buildEntityButtons.visible
+            text: qsTr("Save")
+            onClicked: {
+                console.debug("save")
+                levelEditor.saveCurrentLevel()
+                //levelEditor.exportLevelAsFile ()//写入josn文件
+            }
             anchors.right: parent.right
           }
+          /*SimpleButton {
+            text: qsTr("Load")
+            onClicked: {
+                console.debug("load")
+                levelEditor.removeCurrentLevel ()
+                levelEditor.loadAllLevelsFromStorageLocation(levelEditor.authorGeneratedLevelsLocation)
+                //levelEditor.loadAllLevelsFromStorageLocation(levelEditor.authorGeneratedLevelsLocation)
+                //levelSelectionList.visible = true
+            }
+
+            anchors.right: parent.right
+          }*/
           SimpleButton {
             text: qsTr("Back")
             onClicked: backPressed()

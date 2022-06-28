@@ -1,6 +1,7 @@
 import QtQuick 2.0
 
 Enemybased {
+    variationType:"jumper"
     property bool down: true
     collider.force:Qt.point(0,-50)
     property string img1: "../../assets/opponent/opponent_jumper.png"
