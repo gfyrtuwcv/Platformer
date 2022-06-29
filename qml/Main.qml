@@ -13,19 +13,23 @@ GameWindow {//游戏窗口
                 gameWindow.state = "selectLevel"
             }
         }
-
+        LevelScene{
+            id:levelScene
+            onBackPressed: gameWindow.state="selectLevel"
+        }
         SelectLevelScene{//关卡界面
             id:selectLevelScene
-
+            levelEditor:levelScene.levelEditor
             onBackButtonPressed: gameWindow.state="menu"
             onLevelPressed: {
                 gameScene.setLevel(selectedLevel)
                 gameWindow.state = "game"
             }
             onProductPressed: gameWindow.state = "level"
-            LevelScene{
-                id:levelScene
-                onBackPressed: gameWindow.state="selectLevel"
+            onLevelplay: {
+                gameWindow.state = "game"
+                gameScene.levelData=levelData
+                gameScene.starLevel()
             }
         }
 

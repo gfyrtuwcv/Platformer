@@ -10,16 +10,20 @@ SceneBase{//游戏场景
 
         property string activeLevelFileName
         property var levelEditor
+        property var levelData
         property int time: 0
 
-        signal backButtonPressed3
-        function setLevel(fileName){
-            //activeLevelFileName = fileName
-            levelEditor.removeCurrentLevel ()
-            levelEditor.loadAllLevelsFromStorageLocation(levelEditor.applicationJSONLevelsLocation)
-            player.resetPosition()
-        }
 
+        signal backButtonPressed3
+        function starLevel(){//levelData
+            //activeLevelFileName = fileName
+            //levelEditor.removeCurrentLevel ()
+            //levelEditor.loadAllLevelsFromStorageLocation(levelData)
+            console.debug("start")
+            levelEditor.loadAllLevelsFromStorageLocation()
+            player.resetPosition()
+
+        }
 
         Rectangle{
             anchors.fill: parent

@@ -41,21 +41,32 @@ SceneBase {
         onLevelPublished: {
           // 发布带有levelId的关卡时保存
         }
-
+        onLoadAllLevelsFromStorageLocationFinished: {
+            console.debug("levels start")
+        }
     }
     LevelSelectionList{
         id:levelSelectionList
         width: 150
-        height: 100
+        height: parent.height
         visible: false
         anchors.left: parent.left
-        levelMetaDataArray: levelEditor.authorGeneratedLevels//将玩家存储的关卡与关卡列表连接起来
+        levelItemDelegate:componentButton
+        levelMetaDataArray: levelEditor.authorGeneratedLevels//applicationJSONLevels//将玩家存储的关卡与关卡列表连接起来
         onLevelSelected: {
             levelEditor.loadSingleLevel(levelData)// LevelSelectionScene传递当前选择的级别信息，其中包含levelMetaData作为levelData参数
         }
-    }
-    LevelLoader{
-        id:levelLoader
+        Component{
+            id:componentButton
+            SimpleButton {
+               height: 30
+               width: levelSelectionList.width
+               text: modelData.levelName
+               onClicked: {
+                 levelSelectionList.levelSelected(modelData)
+               }
+             }
+        }
     }
 
     ItemEditor{//项编辑器
@@ -123,18 +134,26 @@ SceneBase {
             }
             anchors.right: parent.right
           }
-          /*SimpleButton {
+          SimpleButton {
             text: qsTr("Load")
             onClicked: {
-                console.debug("load")
-                levelEditor.removeCurrentLevel ()
-                levelEditor.loadAllLevelsFromStorageLocation(levelEditor.authorGeneratedLevelsLocation)
+                levelSelectionList.visible = !levelSelectionList.visible
+                remove.visible = !remove.visible
+                console.debug( levelEditor.currentLevelStorageLocation)
+                //levelEditor.removeCurrentLevel ()
                 //levelEditor.loadAllLevelsFromStorageLocation(levelEditor.authorGeneratedLevelsLocation)
-                //levelSelectionList.visible = true
+                //levelEditor.loadAllLevelsFromStorageLocation(levelEditor.authorGeneratedLevelsLocation)
             }
 
             anchors.right: parent.right
-          }*/
+          }/**/
+          SimpleButton {
+             id:remove
+             visible:false
+             anchors.right: parent.right
+             text: qsTr("Remove Level")
+             onClicked:levelEditor.removeCurrentLevel ()//移除关卡
+          }
           SimpleButton {
             text: qsTr("Back")
             onClicked: backPressed()
