@@ -3,7 +3,9 @@ import Felgo 3.0
 //玩家
 EntityBaseDraggable {
     //entityId: "Player"
+    id:player
     entityType: "player"
+    signal end
     property alias image: image
     property alias collider: collider
     property alias foot: foot
@@ -14,7 +16,7 @@ EntityBaseDraggable {
     property string normalimg: "../../assets/player/player.png"
     property string starimg: "../../assets/player/player_rainbow.png"
     property bool isstar: false//是否吃到星星
-    property bool noinvincible: true
+    property bool noinvincible: true//不无敌
     property int isjump: 0
     property int life : 3//生命
     property int size:1//大小
@@ -45,6 +47,7 @@ EntityBaseDraggable {
             var other = other.getBody().target
             if(other.entityType === "obstacles" || other.entityType ==="platform"){
                 isjump=0;
+
             }
             if(other.entityType ==="spilk" && noinvincible){
                 die()
@@ -103,21 +106,32 @@ EntityBaseDraggable {
         invincible.start()//无敌时间
         noinvincible = false
     }
+    onIsliveChanged: {//end
+        end()
+    }
 
-    function resetPosition(){//重置位置
+    function resetPosition(){//重置
         x=savex
         y=savey
+        life=3
+        size=1
+        sizeChang()
+        isstar= false//是否吃到星星
+        noinvincible= true
+        isjump= 0
+        islive= true//是否存活
     }
 
     function sizeChang(){//改变大小
         if(size>2) size=2
+        console.debug(image.width+"   "+image.height)
         if(size==2){
             image.width+=size*15
             image.height+=size*15
 
         }else{
-            image.width-=2*15
-            image.height-=2*15
+            image.width=64
+            image.height=64
         }
     }
 
@@ -127,7 +141,6 @@ EntityBaseDraggable {
             jumpControl.start()
         }
     }
-
     function die(){//死
         if(size>1) {
             size--

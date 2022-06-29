@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Felgo 3.0
 //基础障碍
 EntityBaseDraggable {
+    id:obstaclesbased
     entityType: "obstacles"
     property alias image: image
     property alias collider: collider
@@ -10,7 +11,6 @@ EntityBaseDraggable {
     height: image.height
     gridSize: 16//将实体位置捕获到网格中
     colliderSize: width
-    id:platform
     MultiResolutionImage {
         id:image
     }

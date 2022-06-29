@@ -2,8 +2,8 @@ import QtQuick 2.0
 import Felgo 3.0
 //基础道具
 EntityBaseDraggable {
+    id:prop
     entityType: "prop"
-
     property alias image: image
     property bool isCollected: false//是否被收集
     property alias collider: collider

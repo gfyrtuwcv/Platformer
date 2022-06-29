@@ -5,7 +5,10 @@ import "../entities"
 SceneBase {
     id:scene
     signal backPressed//返回信号
+    width: 960
+    height: 640
     property alias levelEditor: levelEditor
+    property alias entityManager: entityManager
     Rectangle{
         anchors.fill: parent
         color: "white"
@@ -29,20 +32,18 @@ SceneBase {
     }
     LevelEditor{//游戏关卡编辑
         id:levelEditor
-        //Component.onCompleted: levelEditor.loadAllLevelsFromStorageLocation(authorGeneratedLevelsLocation)
-
+        //anchors.fill: parent
+        Component.onCompleted: levelEditor.loadAllLevelsFromStorageLocation(authorGeneratedLevelsLocation)//加载当前存储位置
         //gameNetworkItem: gameNetwork//用户生成关卡需要的组件id
         toRemoveEntityTypes: ["prop","enemy","obstacles","platform","coin","spilk"]//应该删除的实体的数组
         toStoreEntityTypes: ["prop","enemy","obstacles","platform","coin","spilk"]//存储关卡可中的实体
+        currentLevelStorageLocation:authorGeneratedLevelLocation//保存当前加载级别的存储位置
         //存放关卡的目录
         applicationJSONLevelsDirectory: "../../levels/"//查找applicationJSONLevels的目录
         /*onLevelPublished: {//发布具有关卡Id的级别时，将调用
         }*/
         onLevelPublished: {
           // 发布带有levelId的关卡时保存
-        }
-        onLoadAllLevelsFromStorageLocationFinished: {
-            console.debug("levels start")
         }
     }
     LevelSelectionList{
@@ -129,7 +130,7 @@ SceneBase {
             text: qsTr("Save")
             onClicked: {
                 console.debug("save")
-                levelEditor.saveCurrentLevel()
+                levelEditor.saveCurrentLevel( {levelMetaData: {levelName: "Mylevels"}})
                 //levelEditor.exportLevelAsFile ()//写入josn文件
             }
             anchors.right: parent.right

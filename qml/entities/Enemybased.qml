@@ -5,6 +5,7 @@ EntityBaseDraggable {
     entityType: "enemy"
     property alias image: image
     property alias collider: collider
+    property alias control: control
     property bool islive: true
     gridSize: 16//将实体位置捕获到网格中
     colliderSize: width
@@ -29,6 +30,25 @@ EntityBaseDraggable {
         //collisionTestingOnlyMode:true//使用物理进行碰撞测试，修改实体位置
 
         bodyType: Body.Dynamic//动态,移动
+    }
+    Timer{
+        id:control
+        interval: 500//设置触发器之间的间隔，以毫秒为单位
+        repeat: true//在指定的时间间隔内重复触发
+        running: gameWindow.state === "game"?true:false
+//        onTriggered: {
+//            if(!islive){
+//                image.visible=false
+//                collisionTestingOnlyMode:true//不会受到重力或其他物理力的影响
+//                collider.collidesWith= obstacles
+//                //removeEntity()
+//            }else{
+//                if(down){
+//                    move()
+//                    down=false
+//                }
+//            }
+//        }
     }
 
 }

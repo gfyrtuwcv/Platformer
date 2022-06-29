@@ -13,10 +13,12 @@ GameWindow {//游戏窗口
         GameScene{//游戏界面
             id:gameScene
             levelEditor:levelScene.levelEditor
+            entityManager:levelScene.entityManager
             onBackButtonPressed3: {
                 gameWindow.state = "selectLevel"
             }
         }
+
         LevelScene{
             id:levelScene
             onBackPressed: gameWindow.state="selectLevel"
@@ -33,7 +35,7 @@ GameWindow {//游戏窗口
             onLevelplay: {
                 gameWindow.state = "game"
                 gameScene.levelData=levelData
-                gameScene.starLevel()
+                gameScene.starLevel(levelData)
             }
         }
 
@@ -54,7 +56,10 @@ GameWindow {//游戏窗口
         FinishScene{
             id: finishScene
 
-            //onRestartPressed: gameWindow.state="game"
+            onRestartPressed:{
+                gameScene.starLevel(gameScene.levelData)
+                gameWindow.state="game"
+            }
             onLevelsPressed: gameWindow.state = "selectLevel"
             onMenuPressed: gameWindow.state = "menu"
         }
@@ -97,7 +102,7 @@ GameWindow {//游戏窗口
           状态
 
         */
-        state: "game"
+        state: "menu"
         //activeScene: gameScene
         states: [
             State {

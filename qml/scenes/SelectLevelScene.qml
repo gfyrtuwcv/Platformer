@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Felgo 3.0
 import "../common"
 import "../levels"
+import "../entities"
 //关卡选择
 SceneBase{
     id:selectLevelScene
@@ -96,42 +97,5 @@ SceneBase{
             levelplay(levelData)
         }
     }
-
-    /*Grid{
-        anchors.centerIn: parent
-        spacing:10
-        columns: 5
-        ButtonBase{
-            text: "1"
-            width: 50
-            height: 50
-            onClicked: {
-                levelPressed("GameScene.qml")
-            }
-        }
-        ButtonBase{
-            text: "2"
-            width: 50
-            height: 50
-            onClicked: {
-                levelPressed("Level2.qml")
-            }
-        }
-        ButtonBase{
-            text: "3"
-            width: 50
-            height: 50
-            onClicked: {
-                levelPressed("Level3.qml")
-            }
-        }
-        Repeater{
-            model: 12
-            ButtonBase{
-                width: 50
-                height: 50
-            }
-        }
-    }*/
 
 }

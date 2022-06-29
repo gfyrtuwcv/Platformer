@@ -3,6 +3,7 @@ import Felgo 3.0
 //平台
 Obstaclesbased {
     //entityId: "platform"
+    id: platform
     entityType: "platform"
     image.source: "../../assets/platform/platform.png"
     collider.categories: playform
