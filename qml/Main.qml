@@ -5,6 +5,10 @@ GameWindow {//游戏窗口
     id: gameWindow
     screenWidth: 960
     screenHeight: 640
+    EntityManager{
+        id: entityManager
+        entityContainer: gameScene.container
+    }
 
         GameScene{//游戏界面
             id:gameScene
@@ -93,7 +97,7 @@ GameWindow {//游戏窗口
           状态
 
         */
-        state: "menu"
+        state: "game"
         //activeScene: gameScene
         states: [
             State {
