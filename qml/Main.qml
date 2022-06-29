@@ -48,7 +48,7 @@ GameWindow {//游戏窗口
 
             onSelectLevelPressed: gameWindow.state="selectLevel"
             onCreditPressed: gameWindow.state="credit"
-            //onExitPressed:
+            onExitPressed: gameWindow.visible = false
             onOptionPressed: gameWindow.state="option"
 
         }
@@ -102,7 +102,7 @@ GameWindow {//游戏窗口
           状态
 
         */
-        state: "menu"
+        state: "game"
         //activeScene: gameScene
         states: [
             State {

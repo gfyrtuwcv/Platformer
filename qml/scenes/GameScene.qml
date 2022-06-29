@@ -2,12 +2,13 @@ import QtQuick 2.0
 import Felgo 3.0
 import "../entities"
 import "../common"
+import "../levels"
 
 SceneBase{//游戏场景
-    id:scene
+    id:gameScene
     width: 960
     height: 640
-
+    gridSize: 32
     property string activeLevelFileName
     property var levelEditor
     property var entityManager
@@ -17,7 +18,7 @@ SceneBase{//游戏场景
     function starLevel(levelData){
         player.resetPosition()
         console.debug("start")
-        entityManager.entityContainer=scene
+        entityManager.entityContainer=gameScene
         levelEditor.loadSingleLevel(levelData) //loadAllLevelsFromStorageLocation()
     }
     Rectangle{
@@ -85,6 +86,9 @@ SceneBase{//游戏场景
             }
         }
 
+        Level1{
+            id: level1
+        }
 
         Player{
             id:player
@@ -95,14 +99,11 @@ SceneBase{//游戏场景
 
     Camera{
         id: camera
-        gameWindowSize:Qt.point(scene.gameWindowAnchorItem.width,0/*scene.gameWindowAnchorItem.height*/)
+        gameWindowSize:Qt.point(gameScene.gameWindowAnchorItem.width,0/*scene.gameWindowAnchorItem.height*/)
         entityContainer: container
 
-        // disable the camera's mouseArea, since we handle the controls of the free
-        // moving camera ourself, in EditorUnderlay
         mouseAreaEnabled: false
 
-        // the camera follows the player when not in edit mode
         focusedObject: player
 
         // set focused offset
