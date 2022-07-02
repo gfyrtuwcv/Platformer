@@ -15,10 +15,11 @@ SceneBase{//游戏场景
     property var levelData
     property int time: 0
     signal backButtonPressed3
+    property int offx:240
     function starLevel(levelData){
         player.resetPosition()
         console.debug("start")
-        entityManager.entityContainer=gameScene
+        entityManager.entityContainer=container
         levelEditor.loadSingleLevel(levelData) //loadAllLevelsFromStorageLocation()
     }
     Rectangle{
@@ -32,21 +33,25 @@ SceneBase{//游戏场景
             property string bg2: "../../assets/backgroundImage/night_bg.png"
             source: bg0
         }
-        EntityBase{
-            anchors.top: parent.bottom
-            anchors.left: parent.left
-            anchors.right: parent.right
-            height: 1
-            BoxCollider{
-                id:wall
-                anchors.fill: parent
-                bodyType: Body.Static//静态,不移动
-                fixture.onBeginContact:{
-                    gameWindow.state ="finish"
-                    //player.resetPosition()
-                }
-            }
-        }
+//        ParallaxScrollingBackground {
+
+//        }
+
+//        EntityBase{
+//            anchors.top: parent.bottom
+//            anchors.left: parent.left
+//            anchors.right: parent.right
+//            height: 1
+//            BoxCollider{
+//                id:wall
+//                anchors.fill: parent
+//                bodyType: Body.Static//静态,不移动
+//                fixture.onBeginContact:{
+//                    gameWindow.state ="finish"
+//                    //player.resetPosition()
+//                }
+//            }
+//        }
     }
 
     ButtonBase{
@@ -59,6 +64,10 @@ SceneBase{//游戏场景
     }
     Item{
         id: container
+        z:1
+        //transformOrigin: Item.TopLeft
+        width: parent.width
+        height: parent.height
         PhysicsWorld {//模拟物理世界,包含所有物理实体
             id:physicsWorld
             property int gravitY: 15
@@ -92,28 +101,24 @@ SceneBase{//游戏场景
 
         Player{
             id:player
+            //x:1000
+            //y:1000
             z:3
             controller: controller
         }
     }
 
+
     Camera{
         id: camera
-        gameWindowSize:Qt.point(gameScene.gameWindowAnchorItem.width,0/*scene.gameWindowAnchorItem.height*/)
+
+        gameWindowSize:Qt.point(gameScene.width,0)//gamescene.height)//gameWindowAnchorItem
         entityContainer: container
-
         mouseAreaEnabled: false
-
         focusedObject: player
-
-        // set focused offset
         focusOffset: Qt.point(0.5, 0.3)
-
-        // set limits
-        limitLeft: 0
+        limitLeft: 0//gamescene.width
         limitBottom: 0
-
-        // set free camera offset, if sidebar is visible
         freeOffset: Qt.point(100,0)
     }
 
@@ -166,13 +171,14 @@ SceneBase{//游戏场景
     Timer{
         id: updateTimer
         interval: 30//设置触发器之间的间隔，以毫秒为单位
-        running: true//启动计时器
+        running: gameWindow.state==="game"?true:false//启动计时器
         repeat: true//在指定的时间间隔内重复触发
         onTriggered: {//超时触发
+            //capture()
             var xAxis = controller.xAxis;
             if(xAxis === 0) {
                 //player.foot.linearVelocity.x = 0
-                if(Math.abs(player.foot.linearVelocity.x) > 10) player.foot.linearVelocity.x /= 8
+                if(Math.abs(player.foot.linearVelocity.x) > 10) player.foot.linearVelocity.x /= 5
                 else player.foot.linearVelocity.x = 0
             }
             /*if(!player.islive) {

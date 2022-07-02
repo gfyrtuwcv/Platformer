@@ -9,7 +9,7 @@ EntityBaseDraggable {
     property bool isdeath: false//是否致命
     width: image.width
     height: image.height
-    gridSize: 16//将实体位置捕获到网格中
+    gridSize: 32//将实体位置捕获到网格中
     colliderSize: width
     MultiResolutionImage {
         id:image
@@ -21,7 +21,7 @@ EntityBaseDraggable {
         categories:obstacles
         collidesWith: player | enemy | prop //定义碰撞
 
-        friction:0.8//使物体沿着彼此真实地滑动
+        friction:0.5//使物体沿着彼此真实地滑动
         restitution:0//来使物体弹跳的
         sensor:false//对碰撞做出反应
         density: 0//密度

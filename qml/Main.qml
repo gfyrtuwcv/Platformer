@@ -12,13 +12,26 @@ GameWindow {//游戏窗口
 
         GameScene{//游戏界面
             id:gameScene
+            //levelEditor:levelScene.levelEditor
+            //entityManager:levelScene.entityManager
+            onBackButtonPressed3: {
+                gameWindow.state = "selectLevel"
+            }
+        }
+        /*
+        GameScene{//游戏界面
+            id:gameScene
             levelEditor:levelScene.levelEditor
             entityManager:levelScene.entityManager
             onBackButtonPressed3: {
                 gameWindow.state = "selectLevel"
             }
         }
-
+        LevelScene{
+            id:levelScene
+            onBackPressed: gameWindow.state="selectLevel"
+        }
+*/
         LevelScene{
             id:levelScene
             onBackPressed: gameWindow.state="selectLevel"

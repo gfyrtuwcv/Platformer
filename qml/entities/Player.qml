@@ -5,7 +5,7 @@ EntityBaseDraggable {
     //entityId: "Player"
     id:player
     entityType: "player"
-    signal end
+    //signal end
     property alias image: image
     property alias collider: collider
     property alias foot: foot
@@ -38,25 +38,24 @@ EntityBaseDraggable {
         categories:player//设置碰撞
         height: parent.height
         collidesWith: prop | enemy | obstacles | platform
-        density: 3//密度
+        //density: 3//密度
         active: true
         bodyType: Body.Dynamic//动态身体
         fixedRotation: true//不希望主体旋转
-        collisionTestingOnlyMode:true//不会受到重力或其他物理力的影响
+        //collisionTestingOnlyMode:true//不会受到重力或其他物理力的影响
         fixture.onBeginContact:{
             var other = other.getBody().target
             if(other.entityType === "obstacles" || other.entityType ==="platform"){
                 isjump=0;
-
             }
             if(other.entityType ==="spilk" && noinvincible){
                 die()
             }
-            /*if(other.entityType ==="enemy"&&other.islive){
-                if((y+height)>=other.y){
-                    die()
-                }
-            }*/
+//            if(other.entityType ==="enemy"&&other.islive){
+//                if((y+height)<=other.y){
+//                    die()
+//                }
+//            }
         }
     }
 
@@ -68,7 +67,7 @@ EntityBaseDraggable {
         bodyType: Body.Dynamic//动态身体
         height:1
         anchors.bottom: parent.bottom
-        force:Qt.point(controller.xAxis*17*25,0)//持续力量
+        force:Qt.point(controller.xAxis*17*30,0)//持续力量
         onLinearVelocityChanged: {
           if(linearVelocity.x > 170) linearVelocity.x = 170
           if(linearVelocity.x < -170) linearVelocity.x = -170
@@ -76,14 +75,18 @@ EntityBaseDraggable {
         fixture.onBeginContact:{
             var other = other.getBody().target
             if(other.entityType ==="enemy" && noinvincible){
-                if((y+parent.height+1)<other.y) other.islive=false
-                else die()
+                other.islive=false
+//                if((y+parent.height)<other.y) other.islive=false
+//                else die()
+            }
+            if(other.entityType ==="spilk" && noinvincible){
+                die()
             }
         }
     }
     Timer{
         id:invincible//无敌时间
-        interval: 5000//设置触发器之间的间隔，以毫秒为单位
+        interval: 3000//设置触发器之间的间隔，以毫秒为单位
         repeat: false//在指定的时间间隔内重复触发
         onTriggered: {
             isstar=false
@@ -97,7 +100,7 @@ EntityBaseDraggable {
         repeat: false//在指定的时间间隔内重复触发
         onTriggered: {
             if(isjump<3){
-                foot.linearVelocity.y = -350
+                foot.linearVelocity.y = -650
             }
         }
     }
@@ -107,7 +110,7 @@ EntityBaseDraggable {
         noinvincible = false
     }
     onIsliveChanged: {//end
-        end()
+        gameWindow.state="finish"
     }
 
     function resetPosition(){//重置
@@ -116,6 +119,8 @@ EntityBaseDraggable {
         life=3
         size=1
         sizeChang()
+        foot.linearVelocity.x=0
+        foot.linearVelocity.y=0
         isstar= false//是否吃到星星
         noinvincible= true
         isjump= 0
@@ -149,6 +154,7 @@ EntityBaseDraggable {
             life--
             console.debug("your remain "+life+" life")
             if(life<1) {
+                //islive = true
                 console.debug("your die")
                 islive = false
             }
