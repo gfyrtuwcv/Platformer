@@ -15,9 +15,13 @@ SceneBase{//游戏场景
     signal backButtonPressed3
     property int offx:240
     property alias container: container
+<<<<<<< HEAD
     property var levelData
     property int time: 0
     signal backButtonPressed3
+=======
+    property alias player: player
+>>>>>>> e56f226 (解决了相机无法应用到关卡的问题，加入关卡编辑界面拖拽，完善了实体类，完善了部分ui)
     Rectangle{
         anchors.fill: parent
         color: "white"
@@ -126,8 +130,9 @@ SceneBase{//游戏场景
              collisionTestingOnlyMode: true//仅碰撞测试
              categories:resetSensor
              collidesWith:player
-//             fixture.onBeginContact: {
-//             }
+             fixture.onBeginContact: {
+                 player.resetPosition()
+             }
          }
          Rectangle{
              anchors.fill: parent
@@ -136,13 +141,19 @@ SceneBase{//游戏场景
         }
     }
 
+<<<<<<< HEAD
 
     Camera{
         id: camera
         gameWindowSize:Qt.point(gameScene.width,0)//gamescene.height)//gameWindowAnchorItem
+=======
+    Camera{//相机
+        id: camera
+        gameWindowSize:Qt.point(gameScene.width,0)
+>>>>>>> e56f226 (解决了相机无法应用到关卡的问题，加入关卡编辑界面拖拽，完善了实体类，完善了部分ui)
         entityContainer: container
         mouseAreaEnabled: false
-        focusedObject: player
+        focusedObject: player//相机焦点
         focusOffset: Qt.point(0.5, 0.3)
         limitLeft: 0//gamescene.width
         limitBottom: 0
@@ -200,16 +211,12 @@ SceneBase{//游戏场景
         running: gameWindow.state==="game"?true:false//启动计时器
         repeat: true//在指定的时间间隔内重复触发
         onTriggered: {//超时触发
-            //capture()
             var xAxis = controller.xAxis;
             if(xAxis === 0) {
                 //player.foot.linearVelocity.x = 0
                 if(Math.abs(player.foot.linearVelocity.x) > 10) player.foot.linearVelocity.x /= 5
                 else player.foot.linearVelocity.x = 0
             }
-            /*if(!player.islive) {
-                    //跳转结束界面
-                }*/
         }
     }
 }

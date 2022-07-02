@@ -24,7 +24,7 @@ SceneBase{
         y: 30
         font.pixelSize: 30
         color: "#e9e9e9"
-        text: "kid闯闯闯"
+        text: qsTr("kid闯闯闯")
     }
 
     Column{
@@ -32,17 +32,17 @@ SceneBase{
         spacing: 8
 
         Common.ButtonBase{
-            text: "Levels"
+            text: qsTr("Levels")
             onClicked: selectLevelPressed()
         }
 
         Common.ButtonBase{
-            text: "Credit"
+            text: qsTr("Credit")
             onClicked: creditPressed()
         }
 
         Common.ButtonBase{
-            text: "Exit"
+            text: qsTr("Exit")
             onClicked: exitPressed()
         }
 

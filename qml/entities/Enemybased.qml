@@ -34,22 +34,9 @@ EntityBaseDraggable {
     }
     Timer{
         id:control
-        interval: 500//设置触发器之间的间隔，以毫秒为单位
+        interval: 300//设置触发器之间的间隔，以毫秒为单位
         repeat: true//在指定的时间间隔内重复触发
         running: gameWindow.state === "game"?true:false
-//        onTriggered: {
-//            if(!islive){
-//                image.visible=false
-//                collisionTestingOnlyMode:true//不会受到重力或其他物理力的影响
-//                collider.collidesWith= obstacles
-//                //removeEntity()
-//            }else{
-//                if(down){
-//                    move()
-//                    down=false
-//                }
-//            }
-//        }
     }
 
 }

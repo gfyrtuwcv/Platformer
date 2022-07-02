@@ -58,14 +58,14 @@ SceneBase{
 
         }
         ButtonBase{
-            text: "Exit"
+            text: qsTr("Exit")
             onClicked: exitPressed2()
         }
 
     }
 
     ButtonBase{
-        text: "Back"
+        text: qsTr("Back")
         anchors.right: parent.right
         anchors.rightMargin: 10
         anchors.top: parent.top

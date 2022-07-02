@@ -6,8 +6,6 @@ import "../entities"
 //关卡选择
 SceneBase{
     id:selectLevelScene
-
-    //
     //signal levelPressed(string selectedLevel)
     signal levelplay(variant levelData)
     signal productPressed

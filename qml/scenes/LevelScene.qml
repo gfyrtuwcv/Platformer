@@ -5,21 +5,33 @@ import "../entities"
 SceneBase {
     id:scene
     signal backPressed//返回信号
-//    width: 960
-//    height: 640
+    width: 960
+    height: 640
     property alias levelEditor: levelEditor
     property alias entityManager: entityManager
+    property alias level: level
     Rectangle{
         anchors.fill: parent
         color: "white"
     }
-//    Grid{
+    Item{
+        id:level
+        height: 640
+    }
 
-//    }
+    MouseArea{
+        id:mouseArea
+        anchors.fill: parent
+        drag.target: level//拖动目标
+        //drag.active: true
+        drag.axis: Drag.XAxis//沿着x轴拖动
+        drag.maximumX: 0
+        drag.filterChildren: true//拖动子元素过滤器
+    }
 
     EntityManager{//实体管理器,管理从实体基础组件派生的所有实体
         id:entityManager
-        entityContainer: scene
+        entityContainer: level//scene
         dynamicCreationEntityList: [
            Qt.resolvedUrl("../entities/Coin.qml"),
            Qt.resolvedUrl("../entities/Finish.qml"),
@@ -141,12 +153,10 @@ SceneBase {
           SimpleButton {
             text: qsTr("Load")
             onClicked: {
+                //entityManager.entityContainer=level//scene
                 levelSelectionList.visible = !levelSelectionList.visible
                 remove.visible = !remove.visible
-                console.debug( levelEditor.currentLevelStorageLocation)
-                //levelEditor.removeCurrentLevel ()
-                //levelEditor.loadAllLevelsFromStorageLocation(levelEditor.authorGeneratedLevelsLocation)
-                //levelEditor.loadAllLevelsFromStorageLocation(levelEditor.authorGeneratedLevelsLocation)
+                //console.debug( levelEditor.currentLevelStorageLocation)
             }
 
             anchors.right: parent.right
@@ -169,9 +179,9 @@ SceneBase {
         id: buildEntityButtons
         anchors.left: parent.left
         color: "gray"
-        //anchors.bottom: parent.bottom
+        opacity:0.8
         width: 150
-        height: parent.height
+        height: 500//parent.height
         visible: true//state === "levelEditing"//状态为levelEditing时可见
         Column{
             spacing: 10
@@ -293,6 +303,15 @@ SceneBase {
                 }
             }
         }
+        ButtonBase{
+            anchors.bottom: parent.bottom
+            anchors.left:parent.left
+            anchors.leftMargin: parent.width/2-width
+            width: 20
+            height: 15
+            text: "^"
+            onClicked: buildEntityButtons.visible=!buildEntityButtons.visible
+        }
     }
 
         state: "levelEditing"
@@ -302,5 +321,4 @@ SceneBase {
              PropertyChanges { target: buildEntityButtons; visible: true}
            }
          ]
-
 }

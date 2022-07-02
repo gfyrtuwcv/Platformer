@@ -43,7 +43,6 @@ EntityBaseDraggable {
         active: true
         bodyType: Body.Dynamic//动态身体
         fixedRotation: true//不希望主体旋转
-        //collisionTestingOnlyMode:true//不会受到重力或其他物理力的影响
         fixture.onBeginContact:{
             var other = other.getBody().target
             if(other.entityType === "obstacles" || other.entityType ==="platform"){
@@ -52,11 +51,11 @@ EntityBaseDraggable {
             if(other.entityType ==="spilk" && noinvincible){
                 die()
             }
-//            if(other.entityType ==="enemy"&&other.islive){
-//                if((y+height)<=other.y){
-//                    die()
-//                }
-//            }
+            if(other.entityType ==="enemy"&&other.islive && noinvincible){
+                if((y+height)<=other.y){
+                    die()
+                }
+            }
         }
     }
 
@@ -101,7 +100,7 @@ EntityBaseDraggable {
         repeat: false//在指定的时间间隔内重复触发
         onTriggered: {
             if(isjump<3){
-                foot.linearVelocity.y = -650
+                foot.linearVelocity.y = -700
             }
         }
     }
@@ -154,6 +153,8 @@ EntityBaseDraggable {
         }else{
             life--
             console.debug("your remain "+life+" life")
+            isstar=true
+            noinvincible=false
             if(life<1) {
                 //islive = true
                 console.debug("your die")

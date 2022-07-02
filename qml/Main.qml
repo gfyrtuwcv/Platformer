@@ -30,11 +30,10 @@ GameWindow {//游戏窗口
             id:selectLevelScene
             levelEditor:levelScene.levelEditor
             onBackButtonPressed: gameWindow.state="menu"
-//            onLevelPressed: {
-//                gameScene.setLevel(selectedLevel)
-//                gameWindow.state = "game"
-//            }
-            onProductPressed: gameWindow.state = "level"
+            onProductPressed: {
+                gameWindow.state = "level"
+                entityManager.entityContainer=levelScene.level
+            }
             onLevelplay: {
                 gameWindow.state = "game"
                 gameScene.levelData=levelData
@@ -58,9 +57,9 @@ GameWindow {//游戏窗口
 
         FinishScene{
             id: finishScene
-
+            player:gameScene.player
             onRestartPressed:{
-                gameScene.starLevel(gameScene.levelData)
+                gameScene.container.starLevel(gameScene.levelData)
                 gameWindow.state="game"
             }
             onLevelsPressed: gameWindow.state = "selectLevel"
