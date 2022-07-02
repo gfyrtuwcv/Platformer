@@ -5,14 +5,17 @@ import "../entities"
 SceneBase {
     id:scene
     signal backPressed//返回信号
-    width: 960
-    height: 640
+//    width: 960
+//    height: 640
     property alias levelEditor: levelEditor
     property alias entityManager: entityManager
     Rectangle{
         anchors.fill: parent
         color: "white"
     }
+//    Grid{
+
+//    }
 
     EntityManager{//实体管理器,管理从实体基础组件派生的所有实体
         id:entityManager

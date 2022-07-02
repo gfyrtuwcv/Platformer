@@ -24,6 +24,7 @@ EntityBaseDraggable {
     /*property int contacts: 0
     state: contacts > 0 ? "walking" : "jumping"//不同状态切换*/
     property var controller: controller
+    gridSize: 32
     //gridSize: 16//将实体位置捕获到网格中
     //colliderSize: width
     width: image.width

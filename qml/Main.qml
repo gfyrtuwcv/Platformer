@@ -7,7 +7,14 @@ GameWindow {//游戏窗口
     screenHeight: 640
     property var levelEditor:levelScene.levelEditor
     property var entityManager:levelScene.entityManager
+<<<<<<< HEAD
     property var levelData
+=======
+//    EntityManager{
+//        id: entityManager
+//        entityContainer: gameScene.container
+//    }
+>>>>>>> e3034e3 (完善了相机类)
 
         GameScene{//游戏界面
             id:gameScene

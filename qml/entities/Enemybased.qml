@@ -8,6 +8,7 @@ EntityBaseDraggable {
     property alias control: control
     property bool islive: true
     gridSize: 32//将实体位置捕获到网格中
+    //gridSize: 16//将实体位置捕获到网格中
     colliderSize: width
     width: image.width
     height: image.height

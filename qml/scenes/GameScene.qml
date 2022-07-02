@@ -10,14 +10,14 @@ SceneBase{//游戏场景
     height: 640
     gridSize: 32
     property string activeLevelFileName
-//    property var levelEditor
-//    property var entityManager
     property var levelData
     property int time: 0
     signal backButtonPressed3
     property int offx:240
     property alias container: container
-)
+    property var levelData
+    property int time: 0
+    signal backButtonPressed3
     Rectangle{
         anchors.fill: parent
         color: "white"
@@ -32,6 +32,7 @@ SceneBase{//游戏场景
 //        ParallaxScrollingBackground {
 
 //        }
+
 
 //        EntityBase{
 //            anchors.top: parent.bottom
@@ -147,7 +148,6 @@ SceneBase{//游戏场景
         limitBottom: 0
         freeOffset: Qt.point(100,0)
     }
-
 
     Rectangle{
         enabled: true//启用和禁用触摸处理
