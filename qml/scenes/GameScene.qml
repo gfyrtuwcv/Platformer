@@ -10,18 +10,14 @@ SceneBase{//游戏场景
     height: 640
     gridSize: 32
     property string activeLevelFileName
-    property var levelEditor
-    property var entityManager
+//    property var levelEditor
+//    property var entityManager
     property var levelData
     property int time: 0
     signal backButtonPressed3
     property int offx:240
-    function starLevel(levelData){
-        player.resetPosition()
-        console.debug("start")
-        entityManager.entityContainer=container
-        levelEditor.loadSingleLevel(levelData) //loadAllLevelsFromStorageLocation()
-    }
+    property alias container: container
+)
     Rectangle{
         anchors.fill: parent
         color: "white"
@@ -64,10 +60,19 @@ SceneBase{//游戏场景
     }
     Item{
         id: container
-        z:1
+        //z:-10
         //transformOrigin: Item.TopLeft
         width: parent.width
         height: parent.height
+        signal starLevel(var levelData)
+
+        onStarLevel:{
+            player.resetPosition()
+            console.debug("start")
+            entityManager.entityContainer=container
+            levelEditor.loadSingleLevel(levelData)
+        }
+
         PhysicsWorld {//模拟物理世界,包含所有物理实体
             id:physicsWorld
             property int gravitY: 15
@@ -76,7 +81,7 @@ SceneBase{//游戏场景
             updatesPerSecondForPhysics:30//物理世界每秒更新的频率
             velocityIterations: 5//速度的迭代
             positionIterations: 5//位置的迭代
-            z:100//在实体上绘制debugDraw
+            z:10//在实体上绘制debugDraw
             debugDrawVisible: true//设置为true查看物理系统的调试图
 
             onPreSolve: {
@@ -106,12 +111,33 @@ SceneBase{//游戏场景
             z:3
             controller: controller
         }
+
+        EntityBase{
+         id:resetSensor//边界检测
+         entityType: "resetSeneor"
+         x:player.x
+         y:parent.height
+         width: player.width
+         height: 10
+         //signal contact
+         BoxCollider{
+             anchors.fill: parent
+             collisionTestingOnlyMode: true//仅碰撞测试
+             categories:resetSensor
+             collidesWith:player
+//             fixture.onBeginContact: {
+//             }
+         }
+         Rectangle{
+             anchors.fill: parent
+             color:"red"
+         }
+        }
     }
 
 
     Camera{
         id: camera
-
         gameWindowSize:Qt.point(gameScene.width,0)//gamescene.height)//gameWindowAnchorItem
         entityContainer: container
         mouseAreaEnabled: false

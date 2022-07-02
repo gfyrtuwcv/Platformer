@@ -8,7 +8,7 @@ SceneBase{
     id:selectLevelScene
 
     //
-    signal levelPressed(string selectedLevel)
+    //signal levelPressed(string selectedLevel)
     signal levelplay(variant levelData)
     signal productPressed
     property var levelEditor
@@ -76,7 +76,7 @@ SceneBase{
         //anchors.centerIn: parent
         levelMetaDataArray: levelEditor.applicationJSONLevels//将自带的关卡与关卡列表连接起来
         onLevelSelected: {
-            levelEditor.loadSingleLevel(levelData)// LevelSelectionScene传递当前选择的级别信息，其中包含levelMetaData作为levelData参数
+            //levelEditor.loadSingleLevel(levelData)// LevelSelectionScene传递当前选择的级别信息，其中包含levelMetaData作为levelData参数
             levelplay(levelData)
         }
     }
@@ -93,7 +93,7 @@ SceneBase{
         //anchors.centerIn: parent
         levelMetaDataArray: levelEditor.authorGeneratedLevels//将玩家存储的关卡与关卡列表连接起来
         onLevelSelected: {
-            levelEditor.loadSingleLevel(levelData)// LevelSelectionScene传递当前选择的级别信息，其中包含levelMetaData作为levelData参数
+            //levelEditor.loadSingleLevel(levelData)// LevelSelectionScene传递当前选择的级别信息，其中包含levelMetaData作为levelData参数
             levelplay(levelData)
         }
     }

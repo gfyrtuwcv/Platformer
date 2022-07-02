@@ -5,33 +5,16 @@ GameWindow {//游戏窗口
     id: gameWindow
     screenWidth: 960
     screenHeight: 640
-    EntityManager{
-        id: entityManager
-        entityContainer: gameScene.container
-    }
+    property var levelEditor:levelScene.levelEditor
+    property var entityManager:levelScene.entityManager
+    property var levelData
 
         GameScene{//游戏界面
             id:gameScene
-            //levelEditor:levelScene.levelEditor
-            //entityManager:levelScene.entityManager
             onBackButtonPressed3: {
                 gameWindow.state = "selectLevel"
             }
         }
-        /*
-        GameScene{//游戏界面
-            id:gameScene
-            levelEditor:levelScene.levelEditor
-            entityManager:levelScene.entityManager
-            onBackButtonPressed3: {
-                gameWindow.state = "selectLevel"
-            }
-        }
-        LevelScene{
-            id:levelScene
-            onBackPressed: gameWindow.state="selectLevel"
-        }
-*/
         LevelScene{
             id:levelScene
             onBackPressed: gameWindow.state="selectLevel"
@@ -40,15 +23,15 @@ GameWindow {//游戏窗口
             id:selectLevelScene
             levelEditor:levelScene.levelEditor
             onBackButtonPressed: gameWindow.state="menu"
-            onLevelPressed: {
-                gameScene.setLevel(selectedLevel)
-                gameWindow.state = "game"
-            }
+//            onLevelPressed: {
+//                gameScene.setLevel(selectedLevel)
+//                gameWindow.state = "game"
+//            }
             onProductPressed: gameWindow.state = "level"
             onLevelplay: {
                 gameWindow.state = "game"
                 gameScene.levelData=levelData
-                gameScene.starLevel(levelData)
+                gameScene.container.starLevel(levelData)
             }
         }
 
