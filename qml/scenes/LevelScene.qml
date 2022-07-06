@@ -14,6 +14,12 @@ SceneBase {
         anchors.fill: parent
         color: "white"
     }
+    MultiResolutionImage {
+       id: image
+       x:10
+       y:500
+       source: "../../assets/player/player.png"
+    }
     Item{
         id:level
         height: 640
@@ -145,8 +151,8 @@ SceneBase {
             text: qsTr("Save")
             onClicked: {
                 console.debug("save")
-                levelEditor.saveCurrentLevel( {levelMetaData: {levelName: "Mylevels"}})
-                //levelEditor.exportLevelAsFile ()//写入josn文件
+                levelEditor.saveCurrentLevel( {levelMetaData: {levelName: "Demo1"}})//Mylevels
+                //levelEditor.exportLevelAsFile()//写入josn文件
             }
             anchors.right: parent.right
           }

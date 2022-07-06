@@ -9,12 +9,8 @@ EntityBaseDraggable {
     property bool isdeath: false//是否致命
     width: image.width
     height: image.height
-<<<<<<< HEAD
     gridSize: 32//将实体位置捕获到网格中
-=======
-    gridSize: 32
     //gridSize: 16//将实体位置捕获到网格中
->>>>>>> e3034e3 (完善了相机类)
     colliderSize: width
     MultiResolutionImage {
         id:image

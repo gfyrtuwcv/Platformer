@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
     //int num=0;
     felgo.initialize(&engine);
     felgo.setLicenseKey(PRODUCT_LICENSE_KEY);
-    Play *data;
-    engine.rootContext()->setContextProperty("playdata", data);//data.coin QVariant::fromValue(num)
+//    Play *data;
+//    engine.rootContext()->setContextProperty("playdata", data);//data.coin QVariant::fromValue(num)
     felgo.setMainQmlFileName(QStringLiteral("qml/Main.qml"));
     engine.load(QUrl(felgo.mainQmlFileName()));
     return app.exec();

@@ -7,6 +7,7 @@ Propbased {
         var other = other.getBody().target
         if(other.entityType === "player"&&!isCollected){
             isCollected=true
+            other.propnum++
             other.isstar=true
         }
     }

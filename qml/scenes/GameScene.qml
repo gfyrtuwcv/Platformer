@@ -15,13 +15,7 @@ SceneBase{//游戏场景
     signal backButtonPressed3
     property int offx:240
     property alias container: container
-<<<<<<< HEAD
-    property var levelData
-    property int time: 0
-    signal backButtonPressed3
-=======
     property alias player: player
->>>>>>> e56f226 (解决了相机无法应用到关卡的问题，加入关卡编辑界面拖拽，完善了实体类，完善了部分ui)
     Rectangle{
         anchors.fill: parent
         color: "white"
@@ -33,26 +27,53 @@ SceneBase{//游戏场景
             property string bg2: "../../assets/backgroundImage/night_bg.png"
             source: bg0
         }
-//        ParallaxScrollingBackground {
-
-//        }
-
-
-//        EntityBase{
-//            anchors.top: parent.bottom
-//            anchors.left: parent.left
-//            anchors.right: parent.right
-//            height: 1
-//            BoxCollider{
-//                id:wall
-//                anchors.fill: parent
-//                bodyType: Body.Static//静态,不移动
-//                fixture.onBeginContact:{
-//                    gameWindow.state ="finish"
-//                    //player.resetPosition()
-//                }
-//            }
-//        }
+    }
+    Row{
+        anchors.top: parent.top
+        anchors.left: parent.left
+        Rectangle{
+            color: "gray"
+            width: 60
+            height: 30
+            opacity:0.4//透明度
+            Text {
+                id: live
+                anchors.centerIn: parent
+                color: "red"
+                font.pixelSize: 20
+                text: qsTr("life:"+player.life)
+            }
+        }
+        Rectangle{
+            color: "gray"
+            width: 60
+            height: 30
+            opacity:0.4//透明度
+            MultiResolutionImage {
+                id: coinimg
+                source: "../../assets/coin/coin.png"
+            }
+            Text {
+                id: coin
+                anchors.centerIn: parent
+                color: "red"
+                font.pixelSize: 20
+                text: qsTr("   :"+player.coinnum)
+            }
+        }
+        Rectangle{
+            color: "gray"
+            width: 60
+            height: 30
+            opacity:0.4//透明度
+            Text {
+                id: time
+                anchors.centerIn: parent
+                color: "red"
+                font.pixelSize: 20
+                text: qsTr("time:"+player.timenum)
+            }
+        }
     }
 
     ButtonBase{
@@ -73,6 +94,7 @@ SceneBase{//游戏场景
 
         onStarLevel:{
             player.resetPosition()
+            player.time.start()
             console.debug("start")
             entityManager.entityContainer=container
             levelEditor.loadSingleLevel(levelData)
@@ -87,7 +109,7 @@ SceneBase{//游戏场景
             velocityIterations: 5//速度的迭代
             positionIterations: 5//位置的迭代
             z:10//在实体上绘制debugDraw
-            debugDrawVisible: true//设置为true查看物理系统的调试图
+            //debugDrawVisible: true//设置为true查看物理系统的调试图
 
             onPreSolve: {
                 //this is called before the Box2DWorld handles contact events
@@ -104,15 +126,8 @@ SceneBase{//游戏场景
                 }
             }
         }
-
-        Level1{
-            id: level1
-        }
-
         Player{
             id:player
-            //x:1000
-            //y:1000
             z:3
             controller: controller
         }
@@ -131,7 +146,10 @@ SceneBase{//游戏场景
              categories:resetSensor
              collidesWith:player
              fixture.onBeginContact: {
-                 player.resetPosition()
+                  var other = other.getBody().target
+                 if(other.entityType === "player"){
+                     player.resetPosition()
+                 }
              }
          }
          Rectangle{
@@ -141,16 +159,9 @@ SceneBase{//游戏场景
         }
     }
 
-<<<<<<< HEAD
-
-    Camera{
-        id: camera
-        gameWindowSize:Qt.point(gameScene.width,0)//gamescene.height)//gameWindowAnchorItem
-=======
     Camera{//相机
         id: camera
         gameWindowSize:Qt.point(gameScene.width,0)
->>>>>>> e56f226 (解决了相机无法应用到关卡的问题，加入关卡编辑界面拖拽，完善了实体类，完善了部分ui)
         entityContainer: container
         mouseAreaEnabled: false
         focusedObject: player//相机焦点
@@ -204,7 +215,6 @@ SceneBase{//游戏场景
             }
         }
     }
-
     Timer{
         id: updateTimer
         interval: 30//设置触发器之间的间隔，以毫秒为单位
@@ -214,8 +224,8 @@ SceneBase{//游戏场景
             var xAxis = controller.xAxis;
             if(xAxis === 0) {
                 //player.foot.linearVelocity.x = 0
-                if(Math.abs(player.foot.linearVelocity.x) > 10) player.foot.linearVelocity.x /= 5
-                else player.foot.linearVelocity.x = 0
+                if(Math.abs(player.collider.linearVelocity.x) > 10) player.collider.linearVelocity.x /= 5
+                else player.collider.linearVelocity.x = 0
             }
         }
     }

@@ -29,8 +29,26 @@ SceneBase{
         anchors.horizontalCenter: parent.horizontalCenter
         y:30
         font.pixelSize: 20
-        text: qsTr("恭喜通关，你的用时为："+"")
+        text: qsTr("恭喜通关!")
     }
+     Column{
+         visible: player.islive
+         anchors.horizontalCenter: parent.horizontalCenter
+         y:80
+         Text {
+             text: qsTr("你的用时为："+player.timenum+"秒")
+         }
+         Text {
+             text: qsTr("剩余的生命："+player.life+"条")
+         }
+         Text {
+             text: qsTr("收集的金币数量："+player.coinnum+"个")
+         }
+         Text {
+             text: qsTr("吃到的道具数量："+player.propnum+"个")
+         }
+     }
+
     Row{
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
