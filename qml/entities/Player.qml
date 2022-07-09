@@ -68,32 +68,6 @@ EntityBaseDraggable {
             }
         }
     }
-
-//    BoxCollider{
-//        id:foot
-//        //categories:player//设置碰撞
-//        categories:playerfoot//设置碰撞
-//        collidesWith: enemy | obstacles | platform
-//        bodyType: Body.Dynamic//动态身体
-//        height:1
-//        anchors.bottom: parent.bottom
-//        force:Qt.point(controller.xAxis*17*30,0)//持续力量
-//        onLinearVelocityChanged: {
-//          if(linearVelocity.x > 170) linearVelocity.x = 170
-//          if(linearVelocity.x < -170) linearVelocity.x = -170
-//        }
-//        fixture.onBeginContact:{
-//            var other = other.getBody().target
-//            if(other.entityType ==="enemy" && noinvincible){
-//                other.islive=false
-////                if((y+parent.height)<other.y) other.islive=false
-////                else die()
-//            }
-//            if(other.entityType ==="spilk" && noinvincible){
-//                die()
-//            }
-//        }
-//    }
     Timer{
         id:invincible//无敌时间
         interval: 1500//设置触发器之间的间隔，以毫秒为单位
@@ -128,10 +102,12 @@ EntityBaseDraggable {
 
     onIsstarChanged: {
         noinvincible = false
+        audioManager.playSound("playerInvincible")
         invincible.start()//无敌时间
     }
     onIsliveChanged: {//end
         time.stop()
+        audioManager.playSound("finish")
         gameWindow.state="finish"
     }
 
@@ -169,6 +145,7 @@ EntityBaseDraggable {
         if(isjump <2){
             isjump++
             jumpControl.start()
+            audioManager.playSound("playerJump")
         }
     }
     function die(){//死
@@ -178,8 +155,10 @@ EntityBaseDraggable {
         if(size>1){
             size--
             sizeChang()
+            audioManager.playSound("playerHit")
         }else{
             life--
+            audioManager.playSound("playerHit")
             console.debug("your remain "+life+" life")
             noinvincible=false
             invincible.start()
@@ -187,6 +166,7 @@ EntityBaseDraggable {
                 //islive = true
                 console.debug("your die")
                 islive = false
+                audioManager.playSound("playerDefeated")
             }
         }
     }

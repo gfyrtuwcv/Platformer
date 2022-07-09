@@ -1,5 +1,5 @@
 import QtQuick 2.0
-
+//文本按钮类
 Rectangle{
     id: textButton
 

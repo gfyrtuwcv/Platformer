@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import Felgo 3.0
 //星星
 Propbased {
     variationType: "star"

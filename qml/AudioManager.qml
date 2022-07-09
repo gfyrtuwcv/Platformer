@@ -28,7 +28,7 @@ Item {
     //游戏音效
     SoundEffect{
         id: playerJump
-        source: "../assets/audio/sounds/phaseJump1.wav"
+        source: "../assets/audio//sounds/phaseJump1.wav"
     }
     SoundEffect{
         id: playerHit
@@ -71,9 +71,11 @@ Item {
         source: "../assets/audio/sounds/click1.wav"
     }
 
-    function changeBackGroundMusic(){
+    function changeBackMusic(){
         if(activeScene === gameScene){
-//            if()
+            //audioManager
+        }else{
+            menuMusic.play()
         }
     }
 
@@ -83,7 +85,7 @@ Item {
           else if(sound === "playerHit")
           playerHit.play()
         else if(sound === "playerDefeated")
-          playerDie.play()
+          playerDefeated.play()
         else if(sound === "playerInvincible")
           playerInvincible.play()
         else if(sound === "collectCoin")
@@ -93,9 +95,9 @@ Item {
         else if(sound === "finish")
           finish.play()
         else if(sound === "walkerMonsterDefeated")
-          opponentWalkerDie.play()
+          walkerMonsterDefeated.play()
         else if(sound === "jumperMonsterDefeated")
-          opponentJumperDie.play()
+          jumperMonsterDefeated.play()
         else if(sound === "start")
           start.play()
         else if(sound === "click")

@@ -10,6 +10,7 @@ Propbased{
         if(other.entityType === "player"&&!isCollected){
             other.coinnum++//金币数量增加
             isCollected=true
+            audioManager.playSound("collectCoin")
         }
     }
 }

@@ -24,16 +24,16 @@ SceneBase{
             opacity: Settings.musicEnabled ? 0.9 : 0.4
 
             onClicked: musicPressed()
-//            MouseArea{
-//                anchors.fill: parent
+            MouseArea{
+                anchors.fill: parent
 
-//                onClicked: {
-//                    if(settings.musicEnabled)
-//                        settings.musicEnable=false
-//                    else
-//                        settings.musicEnabled=true
-//                }
-//            }
+                onClicked: {
+                    if(Settings.musicEnabled)
+                        Settings.musicEnable=false
+                    else
+                        Settings.musicEnabled=true
+                }
+            }
         }
         ImageButton{
             id: soundButton
@@ -41,20 +41,21 @@ SceneBase{
 
             opacity: Settings.soundEnabled ? 0.9 : 0.4
             onClicked: soundPressed()
-//            MouseArea{
-//                anchors.fill: parent
+            MouseArea{
+                anchors.fill: parent
 
-//                onClicked: {
-//                    if(settings.soundEnabled){
-//                        settings.soundEnabled = false
-//                    }
-//                    else{
-//                        settings.soundEnabled = true
+                onClicked: {
+                    if(Settings.soundEnabled){
 
-//                        //audioManager.
-//                    }
-//                }
-//            }
+                        Settings.soundEnabled = false
+                    }
+                    else{
+                        Settings.soundEnabled = true
+
+                        audioManager.playSound("playerJump")
+                    }
+                }
+            }
 
         }
         ButtonBase{

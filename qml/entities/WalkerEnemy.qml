@@ -1,5 +1,6 @@
 import QtQuick 2.0
-
+import Felgo 3.0
+//行走敌人
 Enemybased {
     variationType:"walker"
     property int direction: -1//方向
@@ -24,6 +25,7 @@ Enemybased {
     control.onTriggered: {
         if(!islive){
             image.visible=false
+            audioManager.playSound("walkerMonsterDefeated")
             collider.collisionTestingOnlyMode=true//不会受到重力或其他物理力的影响
         }else{
             move()

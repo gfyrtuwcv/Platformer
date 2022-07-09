@@ -9,6 +9,7 @@ Propbased{
         var other = other.getBody().target
         if(other.entityType === "player"&&!isCollected){
             isCollected=true
+            audioManager.playSound("collectMushroom")
             other.propnum++
             other.size++
             other.sizeChang()

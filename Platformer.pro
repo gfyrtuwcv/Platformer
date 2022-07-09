@@ -81,8 +81,6 @@ DISTFILES += \
     qml/entities/Spikeball.qml \
     qml/entities/Star.qml \
     qml/entities/WalkerEnemy.qml \
-    qml/levels/Level1.qml \
-    qml/levels/Level2.qml \
     qml/levels/LevelBase.qml \
     qml/levels/LevelSelection.qml \
     qml/scenes/FinishScene.qml \

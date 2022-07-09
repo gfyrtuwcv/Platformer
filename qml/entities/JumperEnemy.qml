@@ -1,5 +1,5 @@
 import QtQuick 2.0
-
+//可跳跃敌人
 Enemybased {
     variationType:"jumper"
     property bool down: true
@@ -17,6 +17,7 @@ Enemybased {
     control.onTriggered: {
         if(!islive){
             image.visible=false
+            audioManager.playSound("jumperMonsterDefeated")
             collider.collisionTestingOnlyMode=true//不会受到重力或其他物理力的影响
         }else{
             if(down){
