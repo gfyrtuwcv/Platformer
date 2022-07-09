@@ -63,7 +63,7 @@ SceneBase{//游戏场景
         }
         Rectangle{
             color: "gray"
-            width: 60
+            width: 70
             height: 30
             opacity:0.4//透明度
             Text {

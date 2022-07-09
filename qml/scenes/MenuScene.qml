@@ -37,8 +37,8 @@ SceneBase{
         }
 
         Common.ButtonBase{
-            text: qsTr("Credit")
-            onClicked: creditPressed()
+            text: qsTr("Option")
+            onClicked: optionPressed()
         }
 
         Common.ButtonBase{

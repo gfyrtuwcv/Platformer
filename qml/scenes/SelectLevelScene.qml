@@ -43,7 +43,7 @@ SceneBase{
     }
     ButtonBase{
         text: qsTr("Demo")
-        color: "grey"
+        color: demolevel.visible?"white":"grey"
 
         anchors.top: selectLevelScene.top
         anchors.topMargin: 15
@@ -56,7 +56,7 @@ SceneBase{
     }
     ButtonBase{
         text: qsTr("Mylevel")
-        color: "grey"
+        color: mylevel.visible?"white":"grey"
 
         anchors.top: selectLevelScene.top
         anchors.topMargin: 15

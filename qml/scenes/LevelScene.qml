@@ -151,7 +151,7 @@ SceneBase {
             text: qsTr("Save")
             onClicked: {
                 console.debug("save")
-                levelEditor.saveCurrentLevel( {levelMetaData: {levelName: "Demo1"}})//Mylevels
+                levelEditor.saveCurrentLevel( {levelMetaData: {levelName: "Mylevels"}})//Mylevels
                 //levelEditor.exportLevelAsFile()//写入josn文件
             }
             anchors.right: parent.right
@@ -193,14 +193,17 @@ SceneBase {
             spacing: 10
                 ButtonBase{
                     text: "ObstaclesEntity"
+                    color: obstaclesEntity.visible?"white":"grey"
                     onClicked: obstaclesEntity.visible = !obstaclesEntity.visible
                 }
                 ButtonBase{
-                    text: "PropEntityEntity"
+                    text: "PropEntity"
+                    color: propEntity.visible?"white":"grey"
                     onClicked: propEntity.visible = !propEntity.visible
                 }
                 ButtonBase{
-                    text: "PropEntityEntity"
+                    text: "EnemyEntity"
+                    color: enemyEntity.visible?"white":"grey"
                     onClicked: enemyEntity.visible = !enemyEntity.visible
                 }
             Grid{

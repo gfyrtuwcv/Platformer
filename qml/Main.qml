@@ -12,22 +12,29 @@ GameWindow {//游戏窗口
         id:gameScene
         onBackButtonPressed3: {
             gameWindow.state = "selectLevel"
+            audioManager.changeBackMusic()
         }
     }
     LevelScene{
         id:levelScene
-        onBackPressed: gameWindow.state="selectLevel"
+        onBackPressed: {
+            gameWindow.state="selectLevel"
+        }
     }
     SelectLevelScene{//关卡界面
         id:selectLevelScene
         levelEditor:levelScene.levelEditor
-        onBackButtonPressed: gameWindow.state="menu"
+        onBackButtonPressed: {
+            gameWindow.state="menu"
+            audioManager.changeBackMusic()
+        }
         onProductPressed: {
             gameWindow.state = "level"
             entityManager.entityContainer=levelScene.level
         }
         onLevelplay: {
             gameWindow.state = "game"
+            audioManager.changeBackMusic()
             gameScene.levelData=levelData
             gameScene.container.starLevel(levelData)
         }
@@ -53,11 +60,17 @@ GameWindow {//游戏窗口
         onRestartPressed:{
             gameScene.container.starLevel(gameScene.levelData)
             gameWindow.state="game"
+            audioManager.changeBackMusic()
         }
-        onLevelsPressed: gameWindow.state = "selectLevel"
-        onMenuPressed: gameWindow.state = "menu"
+        onLevelsPressed: {
+            gameWindow.state = "selectLevel"
+            audioManager.changeBackMusic()
+        }
+        onMenuPressed: {
+            gameWindow.state = "menu"
+            audioManager.changeBackMusic()
+        }
     }
-
 
     FontLoader {//加载字体
         id: marioFont
@@ -67,11 +80,19 @@ GameWindow {//游戏窗口
     AudioManager{
         id:audioManager
     }
-
     OptionScene{
         id:optionScene
-
+        property int num: 0
         onMusicPressed: {
+            if(num==0){
+                audioManager.stopMusic()
+                num++
+            }
+            else{
+                num--
+                changeBackMusic()
+            }
+
             if(Settings.musicEnabled)
                 Settings.musicEnabled = false
             else
@@ -155,5 +176,6 @@ GameWindow {//游戏窗口
             }
         }
     ]
+
 }
 

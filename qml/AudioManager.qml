@@ -12,9 +12,9 @@ Item {
     BackgroundMusic{
         id:menuMusic
 
-        autoPlay: false
+        autoPlay: true
 
-        source: "../assets/audio/music/menuMusic.mp3"
+        source: "../assets/audio/music/editMusic.mp3"
 
     }
     BackgroundMusic{
@@ -28,7 +28,7 @@ Item {
     //游戏音效
     SoundEffect{
         id: playerJump
-        source: "../assets/audio//sounds/phaseJump1.wav"
+        source: "../assets/audio/sounds/phaseJump1.wav"
     }
     SoundEffect{
         id: playerHit
@@ -72,11 +72,18 @@ Item {
     }
 
     function changeBackMusic(){
-        if(activeScene === gameScene){
-            //audioManager
+
+        if(gameWindow.state==="game"){
+            menuMusic.stop()
+            gamingMusic.play()
         }else{
+            gamingMusic.stop()
             menuMusic.play()
         }
+    }
+    function stopMusic(){
+        menuMusic.pause()
+        gamingMusic.pause()
     }
 
     function playSound(sound){
@@ -105,5 +112,4 @@ Item {
         else
           console.debug("unknown sound name:", sound)
     }
-
 }
