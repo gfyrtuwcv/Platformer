@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Felgo 3.0
-//基础敌人
+//敌人基础类
 EntityBaseDraggable {
     entityType: "enemy"
     property alias image: image

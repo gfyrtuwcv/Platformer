@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 4.11.2, 2022-07-10T18:37:01. -->
+=======
+<!-- Written by QtCreator 4.11.2, 2022-07-09T18:44:29. -->
+>>>>>>> 0b07b05 (lot change)
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
