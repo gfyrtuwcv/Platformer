@@ -9,6 +9,7 @@ Enemybased {
     property string img1: "../../assets/opponent/opponent_walker.png"
     property string img2: "../../assets/opponent/opponent_walker_dead.png"
     image.source:islive ?img1 : img2//对应图片
+    property int i:0
     function move(){
         if(collider.linearVelocity.x === 0) collider.linearVelocity.x=direction*150
         if(collider.linearVelocity.x === -150 ||collider.linearVelocity.x === 150) dirline++
@@ -25,7 +26,9 @@ Enemybased {
     control.onTriggered: {
         if(!islive){
             image.visible=false
-            audioManager.playSound("walkerMonsterDefeated")
+            for(;i<=1;i++){
+                audioManager.playSound("walkerMonsterDefeated")
+            }
             collider.collisionTestingOnlyMode=true//不会受到重力或其他物理力的影响
         }else{
             move()

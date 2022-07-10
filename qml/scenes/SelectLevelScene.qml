@@ -10,13 +10,15 @@ SceneBase{
     signal levelplay(variant levelData)
     signal productPressed
     property var levelEditor
-    Rectangle{
-        anchors.fill: parent.gameWindowAnchorItem
-        color: "#00ffff"
+    Image {
+        id: selectLevelBackGround
+        source: "../../assets/backgroundImage/night_bg.png"
+        anchors.fill: parent
     }
 
     ButtonBase{
         text: qsTr("Production levels")
+        color: "grey"
 
         anchors.bottom: selectLevelScene.bottom
         anchors.topMargin: 8
@@ -29,6 +31,7 @@ SceneBase{
 
     ButtonBase{
         text: qsTr("Back")
+        color: "grey"
 
         anchors.top: selectLevelScene.top
         anchors.topMargin: 8
@@ -40,6 +43,7 @@ SceneBase{
     }
     ButtonBase{
         text: qsTr("Demo")
+        color: "grey"
 
         anchors.top: selectLevelScene.top
         anchors.topMargin: 15
@@ -52,6 +56,7 @@ SceneBase{
     }
     ButtonBase{
         text: qsTr("Mylevel")
+        color: "grey"
 
         anchors.top: selectLevelScene.top
         anchors.topMargin: 15

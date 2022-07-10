@@ -13,7 +13,11 @@ SceneBase{
 
     signal backButtonPressed2
 
-
+    Image {
+        id: optionBackGround
+        source: "../../assets/backgroundImage/night_bg.png"
+        anchors.fill: parent
+    }
     Column{
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
